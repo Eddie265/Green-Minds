@@ -5,7 +5,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "luc
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white py-20" id="contact">
+    <footer className="bg-primary text-white py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand */}
@@ -35,11 +35,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-bold text-lg mb-8 text-accent">Quick Links</h4>
             <ul className="flex flex-col gap-4">
-              {["Home", "About", "Our Work", "Projects", "News", "Contact"].map((item) => (
+              {["Home", "About Us", "Team", "Our Work", "Projects", "News", "Contact"].map((item) => (
                 <li key={item}>
                   <Link href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-white/60 hover:text-white transition-colors">
                     {item}

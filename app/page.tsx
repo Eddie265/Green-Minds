@@ -9,6 +9,7 @@ import Team from "@/components/Team";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import News from "@/components/News";
 import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { GSAPInitializer } from "@/components/GSAPInitializer";
 
@@ -45,6 +46,9 @@ export default function Home() {
         </div>
         <div className="reveal">
           <News />
+        </div>
+        <div className="reveal">
+          <Contact />
         </div>
       </main>
       <Footer />

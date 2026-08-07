@@ -12,6 +12,7 @@ export const GSAPInitializer = () => {
     const reveals = document.querySelectorAll(".reveal")
     
     reveals.forEach((el) => {
+      // Main section reveal
       gsap.fromTo(el, 
         { 
           opacity: 0, 
@@ -20,15 +21,38 @@ export const GSAPInitializer = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
-          ease: "power4.out",
+          duration: 1.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 85%",
             toggleActions: "play none none none",
           },
         }
       )
+
+      // Staggered children reveal
+      const children = el.querySelectorAll("h2, h3, p, button, a, .grid > div, img, .stat-card")
+      if (children.length > 0) {
+        gsap.fromTo(children,
+          { 
+            opacity: 0, 
+            y: 30 
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 75%",
+              toggleActions: "play none none none",
+            },
+          }
+        )
+      }
     })
 
     // Parallax effect for all elements with .parallax class
@@ -57,6 +81,22 @@ export const GSAPInitializer = () => {
         scrub: true
       }
     })
+
+    // Tab title change logic
+    const originalTitle = document.title
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "Save the environment"
+      } else {
+        document.title = originalTitle
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+    }
   }, [])
 
   return null

@@ -139,7 +139,8 @@ const Navbar = () => {
         </div>
 
         {/* CTA */}
-        <button
+        <Link
+          href="#contact"
           className={cn(
             "flex shrink-0 items-center gap-2 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-500 hover:scale-[1.02] active:scale-95",
             scrolled
@@ -149,7 +150,7 @@ const Navbar = () => {
         >
           Join The Movement
           <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
-        </button>
+        </Link>
       </div>
     </nav>
   )

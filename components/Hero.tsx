@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef } from "react"
+import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import gsap from "gsap"
@@ -74,9 +75,9 @@ const Hero = () => {
                 <ArrowRight className="w-4 h-4 text-primary" strokeWidth={2.5} />
               </span>
             </button>
-            <button className="border-2 border-white/80 text-white px-7 py-3.5 rounded-full font-bold text-sm md:text-base hover:bg-white/10 transition-all hover:scale-[1.02] active:scale-95">
+            <Link href="#contact" className="border-2 border-white/80 text-white px-7 py-3.5 rounded-full font-bold text-sm md:text-base hover:bg-white/10 transition-all hover:scale-[1.02] active:scale-95 text-center">
               Become a Partner
-            </button>
+            </Link>
           </div>
         </div>
       </div>

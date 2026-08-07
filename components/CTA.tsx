@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 import Image from "next/image"
 
 const CTA = () => {
@@ -32,12 +33,12 @@ const CTA = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="bg-accent text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">
+              <Link href="#contact" className="bg-accent text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">
                 Volunteer
-              </button>
-              <button className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
+              </Link>
+              <Link href="#contact" className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
                 Partner With Us
-              </button>
+              </Link>
               <button className="bg-transparent border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
                 Donate
               </button>
