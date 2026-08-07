@@ -127,7 +127,7 @@ const Navbar = () => {
                 href={item.href}
                 data-section={item.href.replace("#", "")}
                 className={cn(
-                  "relative text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 pb-1",
+                  "relative text-[10px] uppercase tracking-[0.2em] transition-all duration-500 pb-1",
                   scrolled
                     ? isActive ? "text-primary" : "text-primary/60 hover:text-primary"
                     : isActive ? "text-white" : "text-white/70 hover:text-white"
