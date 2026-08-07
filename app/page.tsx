@@ -5,8 +5,8 @@ import Impact from "@/components/Impact";
 import WhoWeAre from "@/components/WhoWeAre";
 import FocusAreas from "@/components/FocusAreas";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import Team from "@/components/Team";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Testimonial from "@/components/Testimonial";
 import News from "@/components/News";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -23,28 +23,28 @@ export default function Home() {
           <TrustedBy />
         </div>
         <div className="reveal">
-          <Impact />
-        </div>
-        <div className="reveal">
           <WhoWeAre />
         </div>
         <div className="reveal">
-          <FocusAreas />
+          <Team />
+        </div>
+        <div className="reveal">
+          <Impact />
         </div>
         <div className="reveal">
           <FeaturedProjects />
         </div>
         <div className="reveal">
+          <FocusAreas />
+        </div>
+        <div className="reveal">
           <WhyChooseUs />
         </div>
         <div className="reveal">
-          <Testimonial />
+          <CTA />
         </div>
         <div className="reveal">
           <News />
-        </div>
-        <div className="reveal">
-          <CTA />
         </div>
       </main>
       <Footer />

@@ -13,8 +13,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Green Minds INC | Building a Sustainable Tomorrow",
-  description: "Green Minds INC empowers communities and innovators to create environmentally responsible solutions for a better world.",
+  title: "Green Minds INC | Pioneering Sustainable Development",
+  description: "Green Minds INC is a non-profit organization dedicated to pioneering sustainable development through technology, community action, and education. Empowering communities for a better world.",
+  keywords: ["Sustainability", "Environmental Conservation", "Green Innovation", "Climate Action", "Non-profit", "Malawi", "Eco-friendly solutions"],
+  authors: [{ name: "Green Minds INC" }],
+  openGraph: {
+    title: "Green Minds INC | Building a Sustainable Tomorrow",
+    description: "Empowering communities to create environmentally responsible solutions for a better world.",
+    url: "https://greenminds.inc",
+    siteName: "Green Minds INC",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Green Minds INC | Building a Sustainable Tomorrow",
+    description: "Empowering communities to create environmentally responsible solutions for a better world.",
+    images: ["/logo.png"],
+  },
+  icons: {
+    icon: "/logo.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

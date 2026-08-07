@@ -8,19 +8,19 @@ const News = () => {
       title: "New Partnership for a Greener Malawi",
       date: "August 15, 2026",
       summary: "Joining forces with international agencies to scale our impact across the nation.",
-      image: "/hero.jpeg"
+      image: "/1.jpg"
     },
     {
       title: "Tree Planting Campaign Success",
       date: "July 22, 2026",
       summary: "Over 50,000 native trees planted this season thanks to our dedicated volunteers.",
-      image: "/hero.jpeg"
+      image: "/2.jpg"
     },
     {
       title: "Youth Climate Leadership Programme",
       date: "June 30, 2026",
       summary: "Empowering 200 young innovators to lead environmental change in their communities.",
-      image: "/hero.jpeg"
+      image: "/3.jpg"
     },
   ]
 

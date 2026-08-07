@@ -9,28 +9,28 @@ const FeaturedProjects = () => {
       location: "Lilongwe, Malawi",
       desc: "Providing clean energy to rural villages using advanced solar microgrids.",
       progress: 75,
-      image: "/hero.jpeg"
+      image: "/2.jpg"
     },
     {
       title: "Green Reforestation",
       location: "Zomba Plateau",
       desc: "Restoring native forest cover to protect local biodiversity and water sources.",
       progress: 40,
-      image: "/hero.jpeg"
+      image: "/3.jpg"
     },
     {
       title: "Waste to Value Project",
       location: "Blantyre City",
       desc: "Transforming urban waste into organic fertilizer and renewable biogas.",
       progress: 90,
-      image: "/hero.jpeg"
+      image: "/4.jpg"
     },
     {
       title: "Clean Water Initiative",
       location: "Shire River Basin",
       desc: "Implementing solar-powered filtration systems for remote communities.",
       progress: 60,
-      image: "/hero.jpeg"
+      image: "/5.jpg"
     },
   ]
 

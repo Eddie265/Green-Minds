@@ -5,18 +5,18 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "luc
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white py-20">
+    <footer className="bg-primary text-white py-20" id="contact">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-white p-0.5">
+              <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-white p-1">
                 <Image 
-                  src="/logo.jpeg" 
+                  src="/logo.png" 
                   alt="Green Minds INC Logo" 
                   fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-300 rounded-lg"
+                  className="object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                 />
               </div>
               <span className="font-bold text-xl tracking-tight text-white">

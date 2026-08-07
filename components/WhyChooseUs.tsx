@@ -17,8 +17,8 @@ const WhyChooseUs = () => {
       {/* Dark Forest Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/hero.jpeg"
-          alt="Dark forest"
+          src="/4.jpg"
+          alt="Sustainability initiative"
           fill
           className="object-cover brightness-50 parallax scale-110"
         />

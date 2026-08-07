@@ -1,10 +1,21 @@
 import React from "react"
+import Image from "next/image"
 
 const CTA = () => {
   return (
     <section className="py-24 bg-white" id="get-involved">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden rounded-[48px] bg-gradient-to-br from-primary via-[#1a4a2e] to-[#0f3d21] p-12 md:p-24 text-center">
+        <div className="relative overflow-hidden rounded-[48px] p-12 md:p-24 text-center">
+          {/* Background Image */}
+          <Image
+            src="/6.jpg"
+            alt="Nature background"
+            fill
+            className="object-cover"
+          />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-primary/80 mix-blend-multiply" />
+          
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
