@@ -35,12 +35,13 @@ const Impact = () => {
         { innerText: 0 },
         {
           innerText: target,
-          duration: 2.5,
+          duration: 3,
           snap: { innerText: 1 },
-          ease: "power2.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: stat,
-            start: "top 85%",
+            start: "top 90%",
+            once: true
           },
         }
       )
@@ -48,32 +49,39 @@ const Impact = () => {
   }, [])
 
   return (
-    <section className="relative py-20 md:py-28 bg-[#F3F4F2] overflow-hidden" id="our-work">
-      {/* Low-opacity earth background */}
+    <section className="relative py-24 md:py-40 bg-[#F3F4F2] overflow-hidden" id="our-work">
+      {/* Decorative earth background */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-end"
+        className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden"
         aria-hidden="true"
       >
-        <div className="relative w-[min(90vw,720px)] h-[min(90vw,720px)] mr-[-8%] md:mr-[-2%] text-[#7A9B6D] opacity-[0.14]">
+        <div className="relative w-[min(100vw,800px)] h-[min(100vw,800px)] mr-[-10%] text-[#7A9B6D] opacity-[0.08] parallax">
           <EarthGlobe />
         </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 lg:gap-24 items-center">
           {/* Left column */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Our Impact
-            </h2>
-            <div className="w-12 h-1 bg-accent rounded-full mb-5" />
-            <p className="text-muted text-base md:text-lg leading-relaxed mb-8 max-w-sm">
-              Real numbers. Real change. A greener future in motion.
+          <div className="space-y-8">
+            <div className="space-y-4">
+              {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10">*/}
+              {/*  <span className="w-1.5 h-1.5 rounded-full bg-primary" />*/}
+              {/*  <span className="text-primary font-black text-[10px] uppercase tracking-[0.2em]">Our Impact</span>*/}
+              {/*</div>*/}
+              <h2 className="text-5xl md:text-6xl font-black text-primary leading-[0.95] tracking-tight">
+                Measurable change for a <span className="text-accent italic font-serif">greener</span> world.
+              </h2>
+            </div>
+            
+            <p className="text-muted text-lg leading-relaxed max-w-sm">
+              Real numbers. Real impact. We track every initiative to ensure we're making a tangible difference for our planet.
             </p>
-            <button className="group inline-flex items-center gap-3 bg-primary text-white pl-6 pr-2 py-2.5 rounded-full font-semibold text-sm hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95">
-              View Full Impact Report
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white group-hover:scale-105 transition-transform">
-                <ArrowRight className="w-4 h-4 text-primary" strokeWidth={2.5} />
+            
+            <button className="btn-premium group inline-flex items-center gap-4 bg-primary text-white pl-8 pr-2 py-2.5 rounded-full font-bold text-sm hover:bg-accent hover:text-primary transition-all duration-500">
+              View Impact Report
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-primary group-hover:scale-110 transition-transform duration-500">
+                <ArrowRight className="w-5 h-5" strokeWidth={3} />
               </span>
             </button>
           </div>
@@ -81,32 +89,38 @@ const Impact = () => {
           {/* Right column — stat cards */}
           <div
             ref={containerRef}
-            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
           >
             {impacts.map((item, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl px-4 py-6 md:px-5 md:py-8 flex flex-col items-center text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-white/80 transition-transform hover:-translate-y-1"
+                className="premium-card p-8 md:p-10 flex flex-col items-start text-left"
               >
-                <div className="text-accent mb-4 md:mb-5">
-                  <item.Icon className="w-8 h-8 md:w-9 md:h-9" />
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-colors duration-500">
+                  <item.Icon className="w-8 h-8" />
                 </div>
-                <div className="flex items-baseline justify-center mb-2">
+                
+                <div className="flex items-baseline gap-1 mb-2">
                   <span
-                    className="stat-number text-3xl md:text-4xl font-bold text-foreground tabular-nums"
+                    className="stat-number text-5xl md:text-6xl font-black text-primary tabular-nums tracking-tighter"
                     data-target={item.number}
                   >
                     0
                   </span>
                   {item.suffix && (
-                    <span className="text-2xl md:text-3xl font-bold text-foreground">
+                    <span className="text-3xl md:text-4xl font-black text-accent">
                       {item.suffix}
                     </span>
                   )}
                 </div>
-                <p className="text-muted text-xs md:text-sm leading-snug max-w-[120px]">
+                
+                <p className="text-muted font-bold text-sm uppercase tracking-widest">
                   {item.label}
                 </p>
+                
+                <div className="w-full h-1 bg-gray-100 rounded-full mt-8 overflow-hidden">
+                   <div className="w-1/3 h-full bg-accent/30 rounded-full" />
+                </div>
               </div>
             ))}
           </div>

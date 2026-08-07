@@ -109,16 +109,16 @@ const Navbar = () => {
           </div>
           <span
             className={cn(
-              "hidden xs:block font-bold text-base md:text-lg tracking-tight uppercase whitespace-nowrap transition-colors duration-500",
-              scrolled ? "text-foreground" : "text-white"
+              "hidden xs:block font-black text-lg md:text-xl tracking-tighter uppercase whitespace-nowrap transition-colors duration-500",
+              scrolled ? "text-primary" : "text-white"
             )}
           >
-            Green Minds <span className="text-accent font-extrabold">INC</span>
+            Green Minds <span className="text-accent italic font-serif">INC</span>
           </span>
         </Link>
 
         {/* Center Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
+        <div className="hidden lg:flex items-center gap-8 xl:gap-10 relative">
           {navLinks.map((item) => {
             const isActive = activeSection === item.href.replace("#", "")
             return (
@@ -127,14 +127,10 @@ const Navbar = () => {
                 href={item.href}
                 data-section={item.href.replace("#", "")}
                 className={cn(
-                  "relative text-sm font-medium transition-all duration-500 pb-1",
+                  "relative text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 pb-1",
                   scrolled
-                    ? isActive
-                      ? "text-primary"
-                      : "text-foreground/70 hover:text-foreground"
-                    : isActive
-                      ? "text-accent"
-                      : "text-white/85 hover:text-white"
+                    ? isActive ? "text-primary" : "text-primary/60 hover:text-primary"
+                    : isActive ? "text-white" : "text-white/70 hover:text-white"
                 )}
               >
                 {item.label}
@@ -143,10 +139,7 @@ const Navbar = () => {
           })}
           {/* Moving Dot */}
           <div 
-            className={cn(
-              "absolute -bottom-0.5 h-1.5 w-1.5 rounded-full transition-all duration-500 ease-in-out",
-              scrolled ? "bg-primary" : "bg-accent"
-            )}
+            className="absolute -bottom-1 h-1 w-1 rounded-full bg-accent transition-all duration-700 ease-[var(--ease-out-expo)] pointer-events-none shadow-[0_0_10px_rgba(133,183,44,0.8)]"
             style={dotStyle}
           />
         </div>
@@ -156,14 +149,14 @@ const Navbar = () => {
           <Link
             href="#contact"
             className={cn(
-              "hidden sm:flex shrink-0 items-center gap-2 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-500 hover:scale-[1.02] active:scale-95",
+              "btn-premium hidden sm:flex shrink-0 items-center gap-3 text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500",
               scrolled
-                ? "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
-                : "bg-primary/90 hover:bg-primary backdrop-blur-sm"
+                ? "bg-primary hover:bg-accent hover:text-primary shadow-lg shadow-primary/20"
+                : "bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white hover:text-primary"
             )}
           >
-            Join The Movement
-            <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
+            Join Us
+            <ArrowRight className="w-4 h-4" strokeWidth={3} />
           </Link>
 
           {/* Mobile Menu Toggle */}
@@ -185,12 +178,12 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-50 lg:hidden bg-white transition-all duration-500 ease-in-out",
+          "fixed inset-0 z-50 lg:hidden bg-white transition-all duration-700 ease-[var(--ease-out-expo)]",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex flex-col h-full pt-28 px-8 pb-10">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col h-full pt-32 px-10 pb-12">
+          <div className="flex flex-col gap-4">
             {navLinks.map((item, i) => {
               const isActive = activeSection === item.href.replace("#", "")
               return (
@@ -199,27 +192,32 @@ const Navbar = () => {
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "text-3xl font-bold py-3 transition-all duration-300 transform",
-                    isActive ? "text-primary translate-x-2" : "text-foreground/40 hover:text-primary",
-                    isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                    "text-4xl font-black uppercase tracking-tighter py-2 transition-all duration-500 transform",
+                    isActive ? "text-primary translate-x-4" : "text-primary/20 hover:text-primary",
+                    isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                   )}
-                  style={{ transitionDelay: `${i * 50}ms` }}
+                  style={{ transitionDelay: `${i * 60 + 100}ms` }}
                 >
                   {item.label}
+                  {isActive && <span className="text-accent ml-2">.</span>}
                 </Link>
               )
             })}
           </div>
 
-          <div className="mt-auto flex flex-col gap-6">
+          <div className="mt-auto space-y-8">
             <div className="h-px w-full bg-gray-100" />
+            <div className="space-y-4">
+               <p className="text-[10px] font-black text-primary/40 uppercase tracking-[0.3em]">Quick Contact</p>
+               <p className="text-xl font-black text-primary tracking-tight">hello@greenminds.inc</p>
+            </div>
             <Link
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between bg-primary text-white p-6 rounded-3xl font-bold text-xl group"
+              className="flex items-center justify-between bg-primary text-white p-6 rounded-[32px] font-black uppercase text-sm tracking-widest group shadow-2xl shadow-primary/20"
             >
-              Join The Movement
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              Join Us
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-500" strokeWidth={3} />
             </Link>
           </div>
         </div>

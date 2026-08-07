@@ -16,39 +16,43 @@ export const GSAPInitializer = () => {
       gsap.fromTo(el, 
         { 
           opacity: 0, 
-          y: 100 
+          y: 40,
+          scale: 0.98
         },
         {
           opacity: 1,
           y: 0,
+          scale: 1,
           duration: 1.2,
-          ease: "power3.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
+            start: "top 88%",
             toggleActions: "play none none none",
+            once: true
           },
         }
       )
 
       // Staggered children reveal
-      const children = el.querySelectorAll("h2, h3, p, button, a, .grid > div, img, .stat-card")
+      const children = el.querySelectorAll("h2, h3, h4, p, button, a, .grid > div, img, .stat-card, li")
       if (children.length > 0) {
         gsap.fromTo(children,
           { 
             opacity: 0, 
-            y: 30 
+            y: 20 
           },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power2.out",
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 75%",
+              start: "top 80%",
               toggleActions: "play none none none",
+              once: true
             },
           }
         )
