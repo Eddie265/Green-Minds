@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react"
 
 const Contact = () => {
   return (
-    <section className="py-32 bg-white" id="contact">
+    <section className="py-20 md:py-32 bg-white" id="contact">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content & Info */}
@@ -26,7 +26,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">Email Us</p>
-                  <p className="text-lg font-bold text-primary">hello@greenminds.inc</p>
+                  <p className="text-base md:text-lg font-bold text-primary break-all">hello@greenminds.inc</p>
                 </div>
               </div>
 
@@ -36,7 +36,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">Call Us</p>
-                  <p className="text-lg font-bold text-primary">+265 990 000 000</p>
+                  <p className="text-base md:text-lg font-bold text-primary">+265 990 000 000</p>
                 </div>
               </div>
 
@@ -46,7 +46,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">Visit Us</p>
-                  <p className="text-lg font-bold text-primary">Area 10, Lilongwe, Malawi</p>
+                  <p className="text-base md:text-lg font-bold text-primary">Area 10, Lilongwe, Malawi</p>
                 </div>
               </div>
             </div>

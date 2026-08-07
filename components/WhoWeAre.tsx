@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const WhoWeAre = () => {
   return (
-    <section className="py-32 bg-[#FAFAF7]" id="about-us">
+    <section className="py-20 md:py-32 bg-[#FAFAF7]" id="about-us">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Image */}
@@ -41,20 +41,20 @@ const WhoWeAre = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-6 pt-4">
+            <div className="grid grid-cols-2 sm:flex sm:items-center gap-6 md:gap-8 pt-4">
               <div className="flex flex-col">
-                <span className="text-3xl font-bold text-primary">10+</span>
-                <span className="text-sm text-muted uppercase tracking-tighter">Years of Impact</span>
+                <span className="text-3xl md:text-4xl font-bold text-primary">10+</span>
+                <span className="text-[10px] md:text-sm text-muted uppercase tracking-tighter">Years of Impact</span>
               </div>
-              <div className="w-px h-12 bg-gray-200" />
+              <div className="hidden sm:block w-px h-12 bg-gray-200" />
               <div className="flex flex-col">
-                <span className="text-3xl font-bold text-primary">50k+</span>
-                <span className="text-sm text-muted uppercase tracking-tighter">Trees Planted</span>
+                <span className="text-3xl md:text-4xl font-bold text-primary">50k+</span>
+                <span className="text-[10px] md:text-sm text-muted uppercase tracking-tighter">Trees Planted</span>
               </div>
-              <div className="w-px h-12 bg-gray-200" />
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold text-primary">100+</span>
-                <span className="text-sm text-muted uppercase tracking-tighter">Global Partners</span>
+              <div className="hidden sm:block w-px h-12 bg-gray-200" />
+              <div className="flex flex-col col-span-2 sm:col-span-1 border-t border-gray-100 sm:border-0 pt-4 sm:pt-0">
+                <span className="text-3xl md:text-4xl font-bold text-primary">100+</span>
+                <span className="text-[10px] md:text-sm text-muted uppercase tracking-tighter">Global Partners</span>
               </div>
             </div>
           </div>

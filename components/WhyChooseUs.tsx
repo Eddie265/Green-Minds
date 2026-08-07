@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-3xl glass-dark p-12 md:p-16 rounded-[40px] border-white/10">
+        <div className="max-w-3xl glass-dark p-8 md:p-16 rounded-[32px] md:rounded-[40px] border-white/10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Why Choose <br />
             <span className="text-accent">Green Minds INC</span>

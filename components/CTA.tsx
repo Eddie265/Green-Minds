@@ -6,7 +6,7 @@ const CTA = () => {
   return (
     <section className="py-24 bg-white" id="get-involved">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden rounded-[48px] p-12 md:p-24 text-center">
+        <div className="relative overflow-hidden rounded-[32px] md:rounded-[48px] p-8 md:p-24 text-center">
           {/* Background Image */}
           <Image
             src="/6.jpg"
@@ -32,14 +32,14 @@ const CTA = () => {
               Be part of the movement. Together, we can build a cleaner, greener and better world.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6">
-              <Link href="#contact" className="bg-accent text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+              <Link href="#contact" className="bg-accent text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-accent/20 text-center">
                 Volunteer
               </Link>
-              <Link href="#contact" className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
+              <Link href="#contact" className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10 text-center">
                 Partner With Us
               </Link>
-              <button className="bg-transparent border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
+              <button className="bg-transparent border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all text-center">
                 Donate
               </button>
             </div>

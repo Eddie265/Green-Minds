@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -19,8 +19,17 @@ const navLinks = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [dotStyle, setDotStyle] = useState<React.CSSProperties>({ opacity: 0 })
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+  }, [isMobileMenuOpen])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,8 +94,12 @@ const Navbar = () => {
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-3 group">
-          <div className="relative h-10 w-10 shrink-0 transition-transform duration-500 group-hover:scale-110">
+        <Link 
+          href="/" 
+          className="flex shrink-0 items-center gap-3 group"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div className="relative h-9 w-9 md:h-10 w-10 shrink-0 transition-transform duration-500 group-hover:scale-110">
             <Image
               src="/logo.png"
               alt="Green Minds Logo"
@@ -96,7 +109,7 @@ const Navbar = () => {
           </div>
           <span
             className={cn(
-              "hidden sm:block font-bold text-base md:text-lg tracking-tight uppercase whitespace-nowrap transition-colors duration-500",
+              "hidden xs:block font-bold text-base md:text-lg tracking-tight uppercase whitespace-nowrap transition-colors duration-500",
               scrolled ? "text-foreground" : "text-white"
             )}
           >
@@ -104,7 +117,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Center Links */}
+        {/* Center Links (Desktop) */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
           {navLinks.map((item) => {
             const isActive = activeSection === item.href.replace("#", "")
@@ -138,19 +151,78 @@ const Navbar = () => {
           />
         </div>
 
-        {/* CTA */}
-        <Link
-          href="#contact"
-          className={cn(
-            "flex shrink-0 items-center gap-2 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-500 hover:scale-[1.02] active:scale-95",
-            scrolled
-              ? "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
-              : "bg-primary/90 hover:bg-primary backdrop-blur-sm"
-          )}
-        >
-          Join The Movement
-          <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
-        </Link>
+        {/* Actions */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <Link
+            href="#contact"
+            className={cn(
+              "hidden sm:flex shrink-0 items-center gap-2 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-500 hover:scale-[1.02] active:scale-95",
+              scrolled
+                ? "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
+                : "bg-primary/90 hover:bg-primary backdrop-blur-sm"
+            )}
+          >
+            Join The Movement
+            <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
+          </Link>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className={cn(
+              "lg:hidden p-2 rounded-full transition-colors relative z-[60]",
+              isMobileMenuOpen 
+                ? "text-primary bg-primary/5" 
+                : scrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"
+            )}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 lg:hidden bg-white transition-all duration-500 ease-in-out",
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex flex-col h-full pt-28 px-8 pb-10">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((item, i) => {
+              const isActive = activeSection === item.href.replace("#", "")
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "text-3xl font-bold py-3 transition-all duration-300 transform",
+                    isActive ? "text-primary translate-x-2" : "text-foreground/40 hover:text-primary",
+                    isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                  )}
+                  style={{ transitionDelay: `${i * 50}ms` }}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
+          </div>
+
+          <div className="mt-auto flex flex-col gap-6">
+            <div className="h-px w-full bg-gray-100" />
+            <Link
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between bg-primary text-white p-6 rounded-3xl font-bold text-xl group"
+            >
+              Join The Movement
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   )

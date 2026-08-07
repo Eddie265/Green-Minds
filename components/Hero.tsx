@@ -43,7 +43,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center pt-24">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center pt-20 md:pt-24">
         <div ref={contentRef} className="max-w-2xl">
           {/* Slogan badge */}
           {/*<div className="inline-flex items-center gap-2.5 bg-primary px-4 py-2 rounded-full mb-8">*/}
@@ -57,7 +57,7 @@ const Hero = () => {
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white mb-6 leading-[1.08]">
-            Building Greener Ideas for a <br />
+            Building Greener Ideas for a <br className="hidden sm:inline" />
             <span className="text-accent">Sustainable Tomorrow</span>
           </h1>
 
@@ -68,14 +68,14 @@ const Hero = () => {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="group flex items-center gap-3 bg-accent text-white pl-7 pr-2 py-2.5 rounded-full font-bold text-sm md:text-base hover:bg-accent/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-accent/25">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button className="group flex items-center justify-between sm:justify-start gap-3 bg-accent text-white pl-7 pr-2 py-2.5 rounded-full font-bold text-sm md:text-base hover:bg-accent/90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-accent/25 w-full sm:w-auto">
               Explore Our Mission
               <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white group-hover:scale-105 transition-transform">
                 <ArrowRight className="w-4 h-4 text-primary" strokeWidth={2.5} />
               </span>
             </button>
-            <Link href="#contact" className="border-2 border-white/80 text-white px-7 py-3.5 rounded-full font-bold text-sm md:text-base hover:bg-white/10 transition-all hover:scale-[1.02] active:scale-95 text-center">
+            <Link href="#contact" className="border-2 border-white/80 text-white px-7 py-3.5 rounded-full font-bold text-sm md:text-base hover:bg-white/10 transition-all hover:scale-[1.02] active:scale-95 text-center w-full sm:w-auto">
               Become a Partner
             </Link>
           </div>

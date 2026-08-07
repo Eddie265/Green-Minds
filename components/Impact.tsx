@@ -81,7 +81,7 @@ const Impact = () => {
           {/* Right column — stat cards */}
           <div
             ref={containerRef}
-            className="grid grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5"
           >
             {impacts.map((item, i) => (
               <div

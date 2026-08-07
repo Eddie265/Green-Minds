@@ -25,7 +25,7 @@ const News = () => {
   ]
 
   return (
-    <section className="py-32 bg-[#FAFAF7]" id="news">
+    <section className="py-20 md:py-32 bg-[#FAFAF7]" id="news">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Latest News</h2>
@@ -49,7 +49,7 @@ const News = () => {
                 />
               </div>
               
-              <div className="p-10">
+              <div className="p-6 md:p-10">
                 <div className="flex items-center gap-2 text-accent mb-4">
                   <Calendar className="w-4 h-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">{news.date}</span>
