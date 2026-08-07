@@ -1,29 +1,42 @@
 import React from "react"
+import {
+  MalawiCoatOfArms,
+  UNEnvironmentLogo,
+  WWFLogo,
+  UNDPLogo,
+  AfricanUnionLogo,
+  GreenEconomyLogo,
+} from "@/components/icons/PartnerLogos"
+
+const partners = [
+  { name: "Government of Malawi", Logo: MalawiCoatOfArms },
+  { name: "UN Environment Programme", Logo: UNEnvironmentLogo },
+  { name: "WWF", Logo: WWFLogo },
+  { name: "UNDP", Logo: UNDPLogo },
+  { name: "African Union", Logo: AfricanUnionLogo },
+  { name: "Green Economy Coalition", Logo: GreenEconomyLogo },
+]
 
 const TrustedBy = () => {
-  const partners = [
-    "Government of Malawi",
-    "UN Environment Programme",
-    "WWF",
-    "UNDP",
-    "African Union",
-    "Green Economy Coalition"
-  ]
-
   return (
-    <section className="py-20 bg-background border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-muted mb-12">
-          Trusted by leading organizations
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-          {partners.map((partner) => (
-            <div key={partner} className="flex flex-col items-center">
-               <span className="text-xl font-bold text-foreground text-center max-w-[150px]">
-                 {partner}
-               </span>
-            </div>
-          ))}
+    <section className="py-10 md:py-12 bg-white border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+          <h2 className="shrink-0 text-xl md:text-2xl font-bold text-foreground whitespace-nowrap">
+            Trusted By
+          </h2>
+
+          <div className="flex flex-wrap items-center justify-start md:justify-between gap-x-8 gap-y-6 flex-1 opacity-60 grayscale">
+            {partners.map(({ name, Logo }) => (
+              <div
+                key={name}
+                className="flex items-center justify-center text-[#4A4A4A] hover:opacity-80 transition-opacity"
+                title={name}
+              >
+                <Logo className="h-9 md:h-10 w-auto max-w-[120px] md:max-w-[140px]" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
