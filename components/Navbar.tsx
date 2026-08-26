@@ -99,9 +99,9 @@ const Navbar = () => {
           className="flex shrink-0 items-center gap-3 group"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <div className="relative h-9 w-9 md:h-10 w-10 shrink-0 transition-transform duration-500 group-hover:scale-110">
+          <div className="relative h-9 w-20 md:h-10 w-10 shrink-0 transition-transform duration-500 group-hover:scale-110">
             <Image
-              src="/logo.png"
+              src="/logo2.png"
               alt="Green Minds Logo"
               fill
               className="object-contain"

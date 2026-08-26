@@ -5,28 +5,28 @@ import { Github, Twitter, Linkedin } from "lucide-react"
 const Team = () => {
   const team = [
     {
-      name: "Dr. Sarah Chen",
-      role: "Founder & Executive Director",
-      bio: "Ecologist with 15+ years experience in sustainable development and reforestation.",
-      image: "/p1.jpg"
+      name: "Wayne Francis Hiwa",
+      role: "Founding Director",
+      bio: "BSc Environmental Science.",
+      image: "/wayne.jpeg"
     },
     {
-      name: "Marcus Tumpale",
-      role: "Operations Director",
-      bio: "Expert in community-led conservation, logistics, and grassroots mobilization.",
-      image: "/p2.jpg" 
+      name: "Wongani Mulanga",
+      role: "Executive Director",
+      bio: "Bsc Environmental Science",
+      image: "/wongie.jpeg"
     },
     {
-      name: "Elena Rodriguez",
-      role: "Lead Innovator",
-      bio: "Renewable energy engineer focusing on rural microgrids and clean tech.",
-      image: "/p3.jpg"
+      name: "Lughano Mwalyambwire",
+      role: "Communications and Operations Officer",
+      bio: "Bsc Environmental Science",
+      image: "/lughano.jpeg"
     },
     {
-      name: "David Phiri",
-      role: "Community Liaison",
-      bio: "Specialist in environmental education and local stakeholder engagement.",
-      image: "/p4.jpg"
+      name: "Pertunia Jesman",
+      role: "General Secretary",
+      bio: "Bsc Agribusiness Management",
+      image: "/pertunia.jpeg"
     }
   ]
 

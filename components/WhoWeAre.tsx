@@ -9,7 +9,7 @@ const WhoWeAre = () => {
           {/* Left: Image */}
           <div className="relative aspect-square md:aspect-[4/3] rounded-[40px] overflow-hidden shadow-premium group">
             <Image
-              src="/1.jpg"
+              src="/about5.jpeg"
               alt="Our team working on sustainable solutions"
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -33,38 +33,44 @@ const WhoWeAre = () => {
               {/*</div>*/}
               
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[0.95] tracking-tight">
-                Innovation that <br />
-                <span className="text-accent italic font-serif">honors</span> nature.
+                Be Part <br />
+                <span className="text-accent italic font-serif">of the</span>  Change.
               </h2>
             </div>
             
             <div className="flex flex-col gap-6 text-muted text-lg leading-relaxed max-w-xl">
               <p>
-                Green Minds INC is a pioneering non-profit organization dedicated to fostering 
-                sustainable development through the strategic integration of technology, 
-                grassroots community action, and transformative education.
+                Green Minds is a youth-led organization committed to creating sustainable opportunities that
+                empower communities and help build a better future.
+                <br/>
+                We believe that meaningful change begins when young people are given the knowledge,
+                resources, and opportunities they need to take action. Through education, environmental
+                initiatives, and community development, we work to address real-world challenges and develop
+                practical, sustainable solutions.
               </p>
               <p>
-                Founded on the principle that human progress and ecological preservation 
-                are mutually dependent, we work tirelessly to ensure that every technological 
-                leap forward is a victory for our planet.
+                At its core, Green Minds believes that young people are not simply sideliners on the receiving
+                end of change, but rather can be active drivers of it. We aim to inspire youth to recognize their
+                potential, take ownership of the challenges affecting their communities, and become part of
+                creating the solutions and not just waiting for others to do it.
+
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
-              <div className="space-y-1">
-                <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">10+</span>
-                <span className="block text-xs text-accent font-bold uppercase tracking-widest">Years of Impact</span>
-              </div>
-              <div className="space-y-1">
-                <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">50k+</span>
-                <span className="block text-xs text-accent font-bold uppercase tracking-widest">Trees Planted</span>
-              </div>
-              <div className="space-y-1 col-span-2 md:col-span-1">
-                <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">100+</span>
-                <span className="block text-xs text-accent font-bold uppercase tracking-widest">Global Partners</span>
-              </div>
-            </div>
+            {/*<div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-gray-100">*/}
+            {/*  <div className="space-y-1">*/}
+            {/*    <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">10+</span>*/}
+            {/*    <span className="block text-xs text-accent font-bold uppercase tracking-widest">Years of Impact</span>*/}
+            {/*  </div>*/}
+            {/*  <div className="space-y-1">*/}
+            {/*    <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">50k+</span>*/}
+            {/*    <span className="block text-xs text-accent font-bold uppercase tracking-widest">Trees Planted</span>*/}
+            {/*  </div>*/}
+            {/*  <div className="space-y-1 col-span-2 md:col-span-1">*/}
+            {/*    <span className="block text-4xl md:text-5xl font-black text-primary tabular-nums">100+</span>*/}
+            {/*    <span className="block text-xs text-accent font-bold uppercase tracking-widest">Global Partners</span>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
           </div>
         </div>
       </div>

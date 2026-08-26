@@ -31,7 +31,7 @@ const Footer = () => {
             {/* Brand & Mission */}
             <div>
               <h3 className="text-2xl font-black mb-6">
-                Green Minds INC
+                Green Minds
               </h3>
 
               <p className="text-white/60 leading-relaxed mb-8">
@@ -145,14 +145,14 @@ const Footer = () => {
 
                 <div className="flex items-center gap-4 text-white/50 text-sm">
                   <Mail className="w-4 h-4 text-accent" />
-                  hello@greenminds.inc
+                  greenminds43@gmail.com
                 </div>
 
 
-                <div className="flex items-center gap-4 text-white/50 text-sm">
-                  <MapPin className="w-4 h-4 text-accent" />
-                  Lilongwe, Malawi
-                </div>
+                {/*<div className="flex items-center gap-4 text-white/50 text-sm">*/}
+                {/*  <MapPin className="w-4 h-4 text-accent" />*/}
+                {/*  Lilongwe, Malawi*/}
+                {/*</div>*/}
 
               </div>
 
@@ -232,7 +232,7 @@ const Footer = () => {
 
 
             <p>
-              © 2026 Green Minds INC. All rights reserved.
+              © 2026 Green Minds MW. All rights reserved.
             </p>
 
 

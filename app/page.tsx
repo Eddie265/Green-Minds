@@ -20,9 +20,9 @@ export default function Home() {
       <GSAPInitializer />
       <Navbar />
       <Hero />
-      <div className="reveal">
-        <TrustedBy />
-      </div>
+      {/*<div className="reveal">*/}
+      {/*  <TrustedBy />*/}
+      {/*</div>*/}
       <div className="reveal">
         <WhoWeAre />
       </div>
@@ -41,15 +41,15 @@ export default function Home() {
       <div className="reveal">
         <WhyChooseUs />
       </div>
-      <div className="reveal">
-        <Testimonial />
-      </div>
+      {/*<div className="reveal">*/}
+      {/*  <Testimonial />*/}
+      {/*</div>*/}
       <div className="reveal">
         <CTA />
       </div>
-      <div className="reveal">
-        <News />
-      </div>
+      {/*<div className="reveal">*/}
+      {/*  <News />*/}
+      {/*</div>*/}
       <div className="reveal">
         <Contact />
       </div>

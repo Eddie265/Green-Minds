@@ -24,12 +24,12 @@ const Hero = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="/hero.png"
+          src="/hero3.png"
           alt="Lush green valley"
           fill
           className="hero-bg object-cover"
           priority
-          quality={100}
+          quality={70}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
@@ -54,13 +54,13 @@ const Hero = () => {
 
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-black text-white mb-8 leading-[0.95] tracking-tight">
-            Building <span className="text-accent italic font-serif">Greener</span> Ideas <br className="hidden sm:inline" />
-            for a Better World
+            Empowering <span className="text-accent italic font-serif">Young Minds.</span> <br className="hidden sm:inline" />
+            Building Greener Futures.
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-white/80 mb-12 leading-relaxed max-w-xl text-balance">
-            Green Minds INC empowers innovators to create
+            Green Minds MW empowers innovators to create
             environmentally responsible solutions that protect our planet for future generations.
           </p>
 
@@ -81,12 +81,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
-      {/*/!* Scroll indicator *!/*/}
-      {/*<div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50">*/}
-      {/*  <div className="w-px h-12 bg-gradient-to-b from-white/0 via-white to-white/0" />*/}
-      {/*  <span className="text-[10px] text-white font-bold uppercase tracking-[0.2em]">Scroll</span>*/}
-      {/*</div>*/}
     </section>
   )
 }
