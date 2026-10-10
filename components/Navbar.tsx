@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Menu, X } from "lucide-react"
@@ -21,14 +21,22 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
-  const [dotStyle, setDotStyle] = useState<React.CSSProperties>({ opacity: 0 })
+  const dotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
+    if (!isMobileMenuOpen) {
       document.body.style.overflow = "unset"
+      return
     }
+
+    document.body.style.overflow = "hidden"
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false)
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
   }, [isMobileMenuOpen])
 
   useEffect(() => {
@@ -39,8 +47,8 @@ const Navbar = () => {
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
     
-    // Intersection Observer for active section
-    const sections = navLinks.map(link => link.href.replace("#", ""))
+    // Intersection Observer for active section (every section, so the
+    // highlight clears on sections that have no menu link)
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -70% 0px",
@@ -56,10 +64,7 @@ const Navbar = () => {
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
-    sections.forEach(id => {
-      const element = document.getElementById(id)
-      if (element) observer.observe(element)
-    })
+    document.querySelectorAll("section[id]").forEach(element => observer.observe(element))
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
@@ -68,13 +73,15 @@ const Navbar = () => {
   }, [])
 
   useEffect(() => {
-    const activeLink = document.querySelector(`[data-section="${activeSection}"]`) as HTMLElement
+    const activeLink = document.querySelector<HTMLElement>(`[data-section="${activeSection}"]`)
+    const dot = dotRef.current
+    if (!dot) return
     if (activeLink) {
-      setDotStyle({
-        left: `${activeLink.offsetLeft + activeLink.offsetWidth / 2}px`,
-        transform: "translateX(-50%)",
-        opacity: 1
-      })
+      dot.style.left = `${activeLink.offsetLeft + activeLink.offsetWidth / 2}px`
+      dot.style.transform = "translateX(-50%)"
+      dot.style.opacity = "1"
+    } else {
+      dot.style.opacity = "0"
     }
   }, [activeSection, scrolled])
 
@@ -99,26 +106,19 @@ const Navbar = () => {
           className="flex shrink-0 items-center gap-3 group"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <div className="relative h-9 w-20 md:h-10 w-10 shrink-0 transition-transform duration-500 group-hover:scale-110">
+          <div className="relative h-9 w-36 md:h-11 md:w-44 shrink-0 transition-transform duration-500 group-hover:scale-110">
             <Image
               src="/logo2.png"
-              alt="Green Minds Logo"
+              alt="Green Minds Malawi home"
               fill
+              sizes="176px"
               className="object-contain"
             />
           </div>
-          <span
-            className={cn(
-              "hidden xs:block font-black text-lg md:text-xl tracking-tighter uppercase whitespace-nowrap transition-colors duration-500",
-              scrolled ? "text-primary" : "text-white"
-            )}
-          >
-            Green Minds <span className="text-accent italic font-serif">INC</span>
-          </span>
         </Link>
 
         {/* Center Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-8 xl:gap-10 relative">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-10 relative">
           {navLinks.map((item) => {
             const isActive = activeSection === item.href.replace("#", "")
             return (
@@ -127,7 +127,7 @@ const Navbar = () => {
                 href={item.href}
                 data-section={item.href.replace("#", "")}
                 className={cn(
-                  "relative text-[10px] uppercase tracking-[0.2em] transition-all duration-500 pb-1",
+                  "relative text-[11px] uppercase tracking-[0.2em] transition-all duration-500 pb-1",
                   scrolled
                     ? isActive ? "text-primary" : "text-primary/60 hover:text-primary"
                     : isActive ? "text-white" : "text-white/70 hover:text-white"
@@ -139,8 +139,9 @@ const Navbar = () => {
           })}
           {/* Moving Dot */}
           <div 
+            ref={dotRef}
             className="absolute -bottom-1 h-1 w-1 rounded-full bg-accent transition-all duration-700 ease-[var(--ease-out-expo)] pointer-events-none shadow-[0_0_10px_rgba(133,183,44,0.8)]"
-            style={dotStyle}
+            style={{ opacity: 0 }}
           />
         </div>
 
@@ -168,7 +169,9 @@ const Navbar = () => {
                 : scrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"
             )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -177,6 +180,8 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
+        id="mobile-menu"
+        inert={!isMobileMenuOpen}
         className={cn(
           "fixed inset-0 z-50 lg:hidden bg-white transition-all duration-700 ease-[var(--ease-out-expo)]",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -208,8 +213,8 @@ const Navbar = () => {
           <div className="mt-auto space-y-8">
             <div className="h-px w-full bg-gray-100" />
             <div className="space-y-4">
-               <p className="text-[10px] font-black text-primary/40 uppercase tracking-[0.3em]">Quick Contact</p>
-               <p className="text-xl font-black text-primary tracking-tight">hello@greenminds.inc</p>
+               <p className="text-xs font-black text-primary/50 uppercase tracking-[0.3em]">Quick Contact</p>
+               <a href="mailto:greenminds43@gmail.com" className="block text-xl font-black text-primary tracking-tight hover:text-accent transition-colors">greenminds43@gmail.com</a>
             </div>
             <Link
               href="#contact"

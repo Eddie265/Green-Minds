@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from "lucide-react"
+import { Mail, Phone, HandHeart, Send, CheckCircle2, AlertCircle } from "lucide-react"
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -74,7 +74,7 @@ const Contact = () => {
   }
 
   return (
-      <section className="py-24 md:py-40 bg-white" id="contact">
+      <section className="py-20 md:py-28 bg-white" id="contact">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-start">
 
@@ -84,7 +84,7 @@ const Contact = () => {
 
                 {/* Contact heading */}
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[0.95] tracking-tight">
-                  Let's grow a <br />
+                  Let&apos;s grow a <br />
                   <span className="text-accent italic font-serif">
                   greener
                 </span>{" "}
@@ -93,7 +93,7 @@ const Contact = () => {
 
                 {/* Contact introduction */}
                 <p className="text-muted text-lg leading-relaxed max-w-lg">
-                  Have a question, an idea, or want to partner with us? We'd
+                  Have a question, an idea, or want to partner with us? We&apos;d
                   love to hear from you. Our team usually responds within 24
                   hours.
                 </p>
@@ -110,13 +110,16 @@ const Contact = () => {
 
                   <div>
                     {/* Contact email label */}
-                    <p className="text-[10px] font-black text-accent uppercase tracking-widest mb-1">
+                    <p className="text-xs font-black text-accent uppercase tracking-widest mb-1">
                       Email Us
                     </p>
 
-                    <p className="text-lg md:text-xl font-black text-primary break-all">
+                    <a
+                        href="mailto:greenminds43@gmail.com"
+                        className="text-lg md:text-xl font-black text-primary break-all hover:text-accent transition-colors"
+                    >
                       greenminds43@gmail.com
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -128,12 +131,18 @@ const Contact = () => {
 
                   <div>
                     {/* Contact phone label */}
-                    <p className="text-[10px] font-black text-accent uppercase tracking-widest mb-1">
+                    <p className="text-xs font-black text-accent uppercase tracking-widest mb-1">
                       Call Us
                     </p>
 
                     <p className="text-lg md:text-xl font-black text-primary">
-                      +265 981 01 08 14 / +265 886 55 59 64
+                      <a href="tel:+265981010814" className="hover:text-accent transition-colors">
+                        +265 981 01 08 14
+                      </a>
+                      {" / "}
+                      <a href="tel:+265886555964" className="hover:text-accent transition-colors">
+                        +265 886 55 59 64
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -141,7 +150,7 @@ const Contact = () => {
                 {/* Volunteer and partnership */}
                 <div className="group flex items-center gap-6 p-6 rounded-3xl border border-gray-100 hover:border-accent/30 hover:shadow-premium transition-all duration-500">
                   <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
-                    <MapPin className="w-6 h-6" />
+                    <HandHeart className="w-6 h-6" />
                   </div>
 
                   <div>
@@ -320,15 +329,8 @@ const Contact = () => {
                 </button>
 
                 {/* Privacy notice */}
-                <p className="text-center text-[10px] text-muted font-bold uppercase tracking-widest pt-4">
-                  By clicking send, you agree to our{" "}
-                  <a
-                      href="#"
-                      className="text-accent hover:underline"
-                  >
-                    Privacy Policy
-                  </a>
-                  .
+                <p className="text-center text-xs text-muted font-medium pt-4">
+                  We only use your details to reply to your message.
                 </p>
               </form>
             </div>

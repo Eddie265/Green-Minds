@@ -2,10 +2,9 @@
 
 import React, { useEffect, useRef } from "react"
 import {
-  ArrowRight,
   Camera,
   CheckCircle2,
-  Leaf,
+  ChevronDown,
   MapPin,
   Sun,
 } from "lucide-react"
@@ -29,8 +28,8 @@ const projects = [
         label: "Students Reached",
       },
       {
-        value: "4",
-        label: "Partner Schools",
+        value: "5",
+        label: "Schools Reached",
       },
     ],
     tags: ["Climate Education", "Solar Energy", "Schools"],
@@ -48,7 +47,7 @@ const projects = [
       "January 2026 — Programme expanded to Glynn Jonnes Academy Primary School, engaging both staff and learners.",
     ],
     achievement:
-        "Reached over 100 students across four partner schools, three primary and one secondary.",
+        "Reached over 100 students across five schools, three primary and two secondary.",
     sdgs:
         "SDG 4 (Quality Education) · SDG 7 (Affordable and Clean Energy) · SDG 13 (Climate Action) · SDG 15 (Life on Land)",
   },
@@ -96,10 +95,11 @@ const FeaturedProjects = () => {
 
   useEffect(() => {
     const context = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
       const heading = sectionRef.current?.querySelector(".projects-heading")
       const intro = sectionRef.current?.querySelector(".projects-intro")
       const cards = sectionRef.current?.querySelectorAll(".project-card")
-      const bottom = sectionRef.current?.querySelector(".projects-bottom")
 
       if (heading) {
         gsap.fromTo(
@@ -166,26 +166,6 @@ const FeaturedProjects = () => {
         )
       }
 
-      if (bottom) {
-        gsap.fromTo(
-            bottom,
-            {
-              opacity: 0,
-              y: 35,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: bottom,
-                start: "top 85%",
-                once: true,
-              },
-            }
-        )
-      }
     }, sectionRef)
 
     return () => context.revert()
@@ -194,7 +174,7 @@ const FeaturedProjects = () => {
   return (
       <section
           ref={sectionRef}
-          className="relative overflow-hidden bg-[#FAFAF7] py-24 md:py-40"
+          className="relative overflow-hidden bg-[#FAFAF7] py-20 md:py-28"
           id="projects"
       >
         {/* Decorative background */}
@@ -211,91 +191,78 @@ const FeaturedProjects = () => {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
           {/* Section heading */}
-          <div className="mb-16 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <div className="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between">
             <div className="projects-heading max-w-3xl">
               {/* Section label */}
               <div className="mb-5 inline-flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-accent" />
 
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-primary">
-                Our Programmes
+                <span className="text-xs font-black uppercase tracking-[0.25em] text-primary">
+                Flagship Programmes
               </span>
               </div>
 
               <h2 className="text-5xl font-black leading-[0.95] tracking-tight text-primary md:text-6xl lg:text-7xl">
                 Programmes creating
                 <br />
-                <span className="font-serif italic text-accent">
-                meaningful
-              </span>{" "}
-                change.
+                meaningful change.
               </h2>
             </div>
 
             {/* Section introduction */}
             <div className="projects-intro max-w-md">
               <p className="text-base leading-relaxed text-muted md:text-lg">
-                Green Minds Malawi currently runs two active, on-the-ground
-                programmes tackling climate education and climate justice in
-                Malawi. Together, they form a growing ecosystem of education,
-                clean energy access, and community storytelling.
+                Alongside our campaigns and community activities, two flagship
+                programmes anchor our long-term work: Green Ed in schools and
+                Climate Witness in communities. Between them, they combine
+                education, clean energy access and community storytelling.
               </p>
             </div>
           </div>
 
           {/* Programme cards */}
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
             {projects.map((project) => {
               const Icon = project.icon
 
               return (
                   <article
                       key={project.number}
-                      className="project-card premium-card group flex h-full flex-col overflow-hidden rounded-[2rem] bg-white"
+                      className="project-card premium-card group flex flex-col overflow-hidden rounded-[2rem] bg-white"
                   >
                     {/* Programme header */}
-                    <div className="relative overflow-hidden bg-primary p-8 md:p-10">
+                    <div className="relative overflow-hidden bg-primary p-7 md:p-8">
                       {/* Decorative accent */}
                       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full border-[30px] border-white/[0.04]" />
 
-                      {/* Decorative accent */}
-                      <div className="pointer-events-none absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-accent/[0.05]" />
-
                       <div className="relative z-10">
-                        {/* Number and status */}
-                        <div className="mb-8 flex items-center justify-between">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-                        <span className="text-sm font-black text-white">
-                          {project.number}
-                        </span>
+                        {/* Icon and status */}
+                        <div className="mb-6 flex items-center justify-between">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-primary">
+                            <Icon className="h-6 w-6" />
                           </div>
 
                           <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
                             <span className="h-2 w-2 rounded-full bg-accent" />
 
-                            <span className="text-[9px] font-black uppercase tracking-widest text-white">
+                            <span className="text-xs font-black uppercase tracking-widest text-white">
                           {project.status}
                         </span>
                           </div>
                         </div>
 
-                        {/* Icon */}
-                        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-primary">
-                          <Icon className="h-7 w-7" />
-                        </div>
-
                         {/* Category */}
-                        <div className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-accent">
+                        <div className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-accent">
                           {project.category}
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
+                        <h3 className="text-2xl font-black leading-tight tracking-tight text-white md:text-3xl">
                           {project.title}
                         </h3>
 
                         {/* Location */}
-                        <div className="mt-5 flex items-center gap-2 text-white/60">
+                        <div className="mt-4 flex items-center gap-2 text-white/60">
                           <MapPin className="h-4 w-4 text-accent" />
 
                           <span className="text-xs font-bold uppercase tracking-widest">
@@ -306,14 +273,14 @@ const FeaturedProjects = () => {
                     </div>
 
                     {/* Programme content */}
-                    <div className="flex flex-grow flex-col p-8 md:p-10">
+                    <div className="flex flex-col p-7 md:p-8">
                       {/* Description */}
-                      <p className="mb-8 text-sm leading-relaxed text-muted md:text-base">
+                      <p className="mb-6 text-sm leading-relaxed text-muted md:text-base">
                         {project.description}
                       </p>
 
                       {/* Statistics */}
-                      <div className="mb-9 grid grid-cols-2 gap-4">
+                      <div className="mb-6 grid grid-cols-2 gap-4">
                         {project.stats.map((stat) => (
                             <div
                                 key={stat.label}
@@ -323,25 +290,34 @@ const FeaturedProjects = () => {
                                 {stat.value}
                               </div>
 
-                              <div className="mt-1 text-[9px] font-black uppercase tracking-widest text-primary/50">
+                              <div className="mt-1 text-xs font-black uppercase tracking-widest text-primary/50">
                                 {stat.label}
                               </div>
                             </div>
                         ))}
                       </div>
 
-                      {/* Programme focus */}
-                      <div className="mb-9">
-                        {/* Section title */}
-                        <div className="mb-5 flex items-center gap-3">
-                          <span className="h-px w-7 bg-accent" />
-
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                        Programme Focus
-                      </span>
+                      {/* Achievement */}
+                      <div className="rounded-2xl border border-primary/5 bg-[#FAFAF7] p-5">
+                        {/* Achievement title */}
+                        <div className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-accent">
+                          Key Achievement
                         </div>
 
-                        <div className="space-y-4">
+                        <p className="text-sm font-medium leading-relaxed text-primary">
+                          {project.achievement}
+                        </p>
+                      </div>
+
+                      {/* Programme details (collapsed to keep the section short) */}
+                      <details className="group/details mt-6 border-t border-gray-100">
+                        <summary className="flex cursor-pointer list-none items-center justify-between pt-5 text-xs font-black uppercase tracking-[0.2em] text-primary transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+                          Programme focus &amp; timeline
+                          <ChevronDown className="h-4 w-4 transition-transform duration-300 group-open/details:rotate-180" />
+                        </summary>
+
+                        {/* Programme focus */}
+                        <div className="mt-6 space-y-4">
                           {project.highlights.map((highlight) => (
                               <div
                                   key={highlight}
@@ -355,106 +331,49 @@ const FeaturedProjects = () => {
                               </div>
                           ))}
                         </div>
-                      </div>
 
-                      {/* Timeline */}
-                      <div className="mb-9">
-                        {/* Section title */}
-                        <div className="mb-5 flex items-center gap-3">
-                          <span className="h-px w-7 bg-accent" />
+                        {/* Timeline */}
+                        <div className="mt-8">
+                          {/* Section title */}
+                          <div className="mb-4 flex items-center gap-3">
+                            <span className="h-px w-7 bg-accent" />
 
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                        Programme Timeline
-                      </span>
+                            <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">
+                          Programme Timeline
+                        </span>
+                          </div>
+
+                          <div className="space-y-3">
+                            {project.timeline.map((item) => (
+                                <div
+                                    key={item}
+                                    className="flex items-start gap-3"
+                                >
+                                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+
+                                  <p className="text-sm leading-relaxed text-muted">
+                                    {item}
+                                  </p>
+                                </div>
+                            ))}
+                          </div>
                         </div>
 
-                        <div className="space-y-4">
-                          {project.timeline.map((item) => (
-                              <div
-                                  key={item}
-                                  className="flex items-start gap-3"
-                              >
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        {/* SDG alignment */}
+                        <div className="mt-8">
+                          <div className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-primary/50">
+                            Aligned Sustainable Development Goals
+                          </div>
 
-                                <p className="text-xs leading-relaxed text-muted">
-                                  {item}
-                                </p>
-                              </div>
-                          ))}
+                          <p className="text-sm leading-relaxed text-primary/70">
+                            {project.sdgs}
+                          </p>
                         </div>
-                      </div>
-
-                      {/* Achievement */}
-                      <div className="mb-8 rounded-2xl border border-primary/5 bg-[#FAFAF7] p-5">
-                        {/* Achievement title */}
-                        <div className="mb-2 text-[9px] font-black uppercase tracking-[0.2em] text-accent">
-                          Key Achievement
-                        </div>
-
-                        <p className="text-sm font-medium leading-relaxed text-primary">
-                          {project.achievement}
-                        </p>
-                      </div>
-
-                      {/* SDG alignment */}
-                      <div className="mt-auto">
-                        {/* SDG title */}
-                        <div className="mb-2 text-[9px] font-black uppercase tracking-[0.2em] text-primary/40">
-                          Aligned Sustainable Development Goals
-                        </div>
-
-                        <p className="text-xs leading-relaxed text-primary/60">
-                          {project.sdgs}
-                        </p>
-
-                        {/* Bottom accent */}
-                        <div className="mt-7 h-1 w-full overflow-hidden rounded-full bg-gray-100">
-                          <div className="h-full w-1/3 rounded-full bg-accent/40 transition-all duration-700 group-hover:w-full" />
-                        </div>
-                      </div>
+                      </details>
                     </div>
                   </article>
               )
             })}
-          </div>
-
-          {/* Bottom statement */}
-          <div className="projects-bottom mx-auto mt-20 max-w-3xl text-center md:mt-28">
-            {/* Icon */}
-            <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
-              <Leaf className="h-6 w-6" />
-            </div>
-
-            {/* Heading */}
-            <h3 className="text-3xl font-black leading-tight text-primary md:text-4xl">
-              Education.
-              <span className="font-serif italic text-accent">
-              {" "}
-                Action.
-            </span>
-              <br />
-              Stories that drive change.
-            </h3>
-
-            {/* Description */}
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-              From helping students access clean energy to amplifying the voices
-              of communities living through the climate crisis, Green Minds is
-              building practical pathways toward a more sustainable and just
-              future.
-            </p>
-
-            {/* CTA */}
-            <button className="group mt-8 inline-flex items-center gap-4 rounded-full bg-primary py-2.5 pl-8 pr-2 text-sm font-bold text-white transition-all duration-500 hover:bg-accent hover:text-primary">
-              Learn More
-
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary transition-transform duration-500 group-hover:scale-110">
-              <ArrowRight
-                  className="h-5 w-5"
-                  strokeWidth={3}
-              />
-            </span>
-            </button>
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { Star } from "lucide-react"
 const Testimonial = () => {
   const testimonials = [
     {
-      quote: "Green Minds INC transformed our community with sustainable solutions that truly make a difference. Their approach to solar energy is revolutionary for rural development.",
+      quote: "Green Minds Malawi transformed our community with sustainable solutions that truly make a difference. Their approach to solar energy is revolutionary for rural development.",
       author: "Chifundo Banda",
       role: "Community Leader",
       org: "Dedza District Council",
@@ -60,7 +60,7 @@ const Testimonial = () => {
               </div>
 
               <blockquote className="text-lg font-bold text-primary mb-10 leading-relaxed flex-grow">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
 
               <div className="flex items-center gap-4 pt-8 border-t border-gray-100">

@@ -3,23 +3,24 @@ import Image from "next/image"
 
 const WhoWeAre = () => {
   return (
-    <section className="py-24 md:py-40 bg-[#FAFAF7] overflow-hidden" id="about-us">
+    <section className="py-20 md:py-28 bg-[#FAFAF7] overflow-hidden" id="about-us">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Image */}
-          <div className="relative aspect-square md:aspect-[4/3] rounded-[40px] overflow-hidden shadow-premium group">
+          <div className="relative aspect-[4/5] sm:aspect-[4/3] rounded-[28px] md:rounded-[40px] overflow-hidden shadow-premium group">
             <Image
               src="/about5.jpeg"
               alt="Our team working on sustainable solutions"
               fill
+              sizes="(min-width: 1280px) 592px, (min-width: 1024px) 50vw, 100vw"
               className="object-cover transition-transform duration-1000 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
-            
+
             {/* Floating Badge */}
-            <div className="absolute bottom-8 left-8 right-8 glass p-6 rounded-3xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+            <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8 glass p-4 md:p-6 rounded-2xl md:rounded-3xl">
               <p className="text-primary font-bold text-sm">
-                "Our mission is to bridge the gap between human progress and ecological preservation."
+                &ldquo;Young people are not sideliners on the receiving end of change. They can be active drivers of it.&rdquo;
               </p>
             </div>
           </div>
@@ -29,7 +30,7 @@ const WhoWeAre = () => {
             <div className="space-y-4">
               {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20">*/}
               {/*  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />*/}
-              {/*  <span className="text-accent font-black text-[10px] uppercase tracking-[0.2em]">Our Story</span>*/}
+              {/*  <span className="text-accent font-black text-xs uppercase tracking-[0.2em]">Our Story</span>*/}
               {/*</div>*/}
               
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[0.95] tracking-tight">

@@ -12,61 +12,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Green Minds Malawi is a youth-led organisation empowering young people and communities through climate education, clean energy access, environmental conservation and climate justice advocacy.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.greenmindsmw.com"),
   title: {
-    default: "Green Minds INC | Pioneering Sustainable Development",
-    template: "%s | Green Minds INC"
+    default: "Green Minds Malawi | Empowering Young Minds, Building Greener Futures",
+    template: "%s | Green Minds Malawi"
   },
-  description: "Green Minds INC is a leading non-profit organization dedicated to pioneering sustainable development through technology, community action, and education. Join our mission for a greener future.",
-  keywords: ["Sustainability", "Environmental Conservation", "Green Innovation", "Climate Action", "Non-profit", "Malawi", "Eco-friendly solutions", "Renewable Energy", "Reforestation"],
-  authors: [{ name: "Green Minds INC" }],
-  creator: "Green Minds INC",
-  publisher: "Green Minds INC",
+  description,
+  keywords: ["Green Minds Malawi", "Climate Education", "Clean Energy Access", "Youth Leadership", "Environmental Conservation", "Climate Justice", "Solar Lamps", "Tree Planting", "Malawi", "Non-profit"],
+  authors: [{ name: "Green Minds Malawi" }],
+  creator: "Green Minds Malawi",
+  publisher: "Green Minds Malawi",
+  alternates: {
+    canonical: "/",
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Green Minds INC | Building a Sustainable Tomorrow",
-    description: "Empowering communities to create environmentally responsible solutions for a better world. Discover our impact and focus areas.",
-    url: "https://greenminds.inc",
-    siteName: "Green Minds INC",
-    images: [
-      {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Green Minds INC Logo",
-      },
-    ],
-    locale: "en_US",
+    title: "Green Minds Malawi | Empowering Young Minds, Building Greener Futures",
+    description,
+    url: "/",
+    siteName: "Green Minds Malawi",
+    locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Green Minds INC | Building a Sustainable Tomorrow",
-    description: "Empowering communities to create environmentally responsible solutions for a better world.",
-    images: ["/logo.png"],
-    creator: "@greenmindsinc",
-  },
-  icons: {
-    icon: [
-      { url: "/logo.png" },
-      { url: "/logo.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [
-      { url: "/logo.png" },
-    ],
+    title: "Green Minds Malawi | Empowering Young Minds, Building Greener Futures",
+    description,
   },
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -84,7 +70,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Sections only start hidden (for the reveal animation) when JavaScript is running */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="min-h-full flex flex-col selection:bg-accent/30 selection:text-primary">
         <a 
           href="#main-content" 

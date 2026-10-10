@@ -12,27 +12,34 @@ const Hero = () => {
   useEffect(() => {
     if (!contentRef.current) return
 
-    gsap.fromTo(
-      contentRef.current,
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1.8, ease: "expo.out", delay: 0.2 }
-    )
+    const mm = gsap.matchMedia()
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 1.8, ease: "expo.out", delay: 0.2 }
+      )
+    })
+
+    return () => mm.revert()
   }, [])
 
   return (
-    <section id="home" className="hero-section relative min-h-screen w-full overflow-hidden flex items-center pb-20 md:pb-28">
-      {/* Background */}
-      <div className="absolute inset-0">
+    <section id="home" className="hero-section relative w-full overflow-hidden flex flex-col bg-primary pt-20 pb-16 md:min-h-screen md:flex-row md:items-center md:pt-0 md:pb-28">
+      {/* Background: full-width banner at the photo's own ratio on mobile, full-bleed cover from md up */}
+      <div className="relative w-full aspect-[1672/941] overflow-hidden md:absolute md:inset-0 md:aspect-auto">
         <Image
           src="/hero3.png"
-          alt="Lush green valley"
+          alt="Green Minds team handing a solar lamp to a community member"
           fill
-          className="hero-bg object-cover"
-          priority
-          quality={70}
+          sizes="100vw"
+          className="hero-bg object-cover object-center"
+          preload
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+        {/* Mobile: fade the photo's bottom edge into the section background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent md:hidden" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-black/70 via-black/30 to-transparent md:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-black/50 via-transparent to-black/20 md:block" />
       </div>
 
       {/* Foreground depth elements */}
@@ -42,7 +49,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-20">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-8 md:pt-20">
         <div ref={contentRef} className="max-w-4xl">
           {/* Slogan badge */}
           {/*<div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-8">*/}
@@ -53,25 +60,28 @@ const Hero = () => {
           {/*</div>*/}
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-black text-white mb-8 leading-[0.95] tracking-tight">
+          <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-black text-white mb-8 leading-[0.95] tracking-tight">
             Empowering <span className="text-accent italic font-serif">Young Minds.</span> <br className="hidden sm:inline" />
             Building Greener Futures.
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-white/80 mb-12 leading-relaxed max-w-xl text-balance">
-            Green Minds MW empowers innovators to create
-            environmentally responsible solutions that protect our planet for future generations.
+            Green Minds Malawi equips young people and communities with the knowledge,
+            resources and opportunities to tackle climate change and protect our environment.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5">
-            <button className="btn-premium group flex items-center justify-between sm:justify-start gap-4 bg-accent text-primary pl-8 pr-2 py-2.5 rounded-full font-bold text-base hover:bg-white transition-all w-full sm:w-auto">
+            <Link
+              href="#about-us"
+              className="btn-premium group flex items-center justify-between sm:justify-start gap-4 bg-accent text-primary pl-8 pr-2 py-2.5 rounded-full font-bold text-base hover:bg-white transition-all w-full sm:w-auto"
+            >
               Explore Our Mission
               <span className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white group-hover:scale-110 transition-transform duration-500">
                 <ArrowRight className="w-5 h-5" strokeWidth={3} />
               </span>
-            </button>
+            </Link>
             <Link 
               href="#contact" 
               className="btn-premium px-8 py-4 rounded-full border-2 border-white/30 text-white font-bold text-base hover:bg-white/10 hover:border-white transition-all text-center w-full sm:w-auto"

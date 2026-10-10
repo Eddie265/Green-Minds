@@ -1,8 +1,11 @@
 "use client"
 
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Camera,
   Leaf,
   Sun,
@@ -19,7 +22,11 @@ gsap.registerPlugin(ScrollTrigger)
 const projects = [
   {
     number: "01",
-    image:"/work1.png",
+    gallery: [
+      { src: "/work1.png", caption: "Lucky Sikelo receives his solar lamp from the Green Minds team" },
+      { src: "/work/greened-chinsapo-student.jpeg", caption: "A Form 3 student at Chinsapo Secondary School with her new solar desk lamp", fit: "contain" },
+      { src: "/work/greened-alex-mdowa.jpeg", caption: "Alex Mdowa, Standard 7 at Makeshi Primary School, ready to extend his study hours", fit: "contain" },
+    ],
     title: "Green-Ed Initiative",
     category: "Clean Energy & Education",
     description:
@@ -33,7 +40,22 @@ const projects = [
   },
   {
     number: "02",
-    image:"/work2.jpeg",
+    gallery: [
+      { src: "/work2.jpeg", caption: "Domwe Primary School: climate change session with Standards 6, 7 and 8" },
+      { src: "/work/advocacy-domwe-session.jpeg", caption: "Learners at Domwe Primary School during the climate session" },
+      { src: "/work/advocacy-glynn-jonnes.jpeg", caption: "Glynn Jonnes Academy: learning about the 3 R's" },
+      { src: "/work/advocacy-glynn-jonnes-class.jpeg", caption: "Reduce, Reuse, Recycle lesson at Glynn Jonnes Academy" },
+      { src: "/work/advocacy-16-days.jpeg", caption: "16 Days of Activism at LUANAR Bunda Campus" },
+      { src: "/work/advocacy-girls-green-futures.jpeg", caption: "Girls & Green Futures webinar", fit: "contain" },
+      { src: "/work/advocacy-webinar-session.jpeg", caption: "Young women and climate leaders live on the Girls & Green Futures webinar", fit: "contain" },
+      { src: "/work/advocacy-climate-justice-walk.jpeg", caption: "Climate Justice Walk with the Clean Cities Project", fit: "contain" },
+      { src: "/work/advocacy-youth-symposium.jpeg", caption: "National Youth Symposium on Public Debt", fit: "contain" },
+      { src: "/work/advocacy-world-youth-day.jpeg", caption: "World Youth Day at Nanjati CDS, Lilongwe" },
+      { src: "/work/advocacy-world-youth-day-panel.jpeg", caption: "World Youth Day panel discussion on youth participation in the economy" },
+      { src: "/work/advocacy-world-youth-day-audience.jpeg", caption: "Young people at the World Youth Day commemoration" },
+      { src: "/work/advocacy-youth-summit.jpeg", caption: "2026 National Youth Summit at BICC, Lilongwe", fit: "contain" },
+      { src: "/work/advocacy-youth-summit-bicc.jpeg", caption: "Representing Green Minds at the National Youth Summit", fit: "contain" },
+    ],
     title: "Environmental Advocacy & Campaigns",
     category: "Climate Action & Youth Engagement",
     description:
@@ -50,7 +72,13 @@ const projects = [
   },
   {
     number: "03",
-    image:"/work3.jpeg",
+    gallery: [
+      { src: "/work3.jpeg", caption: "Tree planting at Mbidzi Secondary School" },
+      { src: "/work/resources-mbidzi-seedlings.jpeg", caption: "Mbidzi learners with their seedlings" },
+      { src: "/work/resources-mbidzi-learners.jpeg", caption: "Learners and the Green Minds team ready to plant" },
+      { src: "/work/resources-domwe-bins.jpeg", caption: "Donating classroom waste bins at Domwe Primary School" },
+      { src: "/work/resources-domwe-learners.jpeg", caption: "Domwe Primary School learners", fit: "contain" },
+    ],
     title: "Resource Distribution",
     category: "Community & Environmental Resources",
     description:
@@ -64,7 +92,11 @@ const projects = [
   },
   {
     number: "04",
-    image:"/work4.png",
+    gallery: [
+      { src: "/work4.png", caption: "Documenting flooding in Mangochi" },
+      { src: "/work/witness-kumwenda-interview.jpeg", caption: "Interviewing Mrs Katherine Kumwenda about how floods have affected her family", fit: "contain" },
+      { src: "/work/witness-poster.jpeg", caption: "Climate Witness: Living the Crisis", fit: "contain" },
+    ],
     title: "Climate Witness: Living the Crisis",
     category: "Climate Stories & Community Resilience",
     description:
@@ -78,11 +110,140 @@ const projects = [
   },
 ]
 
+type Slide = {
+  src: string
+  caption: string
+  fit?: "cover" | "contain"
+}
+
+const WorkGallery = ({
+  slides,
+  title,
+  number,
+}: {
+  slides: Slide[]
+  title: string
+  number: string
+}) => {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+
+  const goTo = (index: number) => {
+    const track = trackRef.current
+    if (!track) return
+    const target = (index + slides.length) % slides.length
+    track.scrollTo({ left: target * track.clientWidth, behavior: "smooth" })
+  }
+
+  const handleScroll = () => {
+    const track = trackRef.current
+    if (!track) return
+    setActive(Math.round(track.scrollLeft / track.clientWidth))
+  }
+
+  return (
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#E8EDE5] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[440px]">
+        {/* Slides */}
+        <div
+            ref={trackRef}
+            onScroll={handleScroll}
+            className="flex h-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-roledescription="carousel"
+            aria-label={`${title} photos`}
+        >
+          {slides.map((slide, slideIndex) => (
+              <figure
+                  key={slide.src}
+                  className="relative h-full w-full shrink-0 snap-center overflow-hidden"
+                  aria-roledescription="slide"
+                  aria-label={`${slideIndex + 1} of ${slides.length}`}
+              >
+                {/* Blurred backdrop for portrait photos */}
+                {slide.fit === "contain" && (
+                    <Image
+                        src={slide.src}
+                        alt=""
+                        fill
+                        sizes="10vw"
+                        className="scale-110 object-cover blur-2xl brightness-75"
+                        aria-hidden="true"
+                    />
+                )}
+
+                <Image
+                    src={slide.src}
+                    alt={slide.caption}
+                    fill
+                    sizes="(min-width: 1280px) 608px, (min-width: 1024px) 50vw, 100vw"
+                    className={slide.fit === "contain" ? "object-contain" : "object-cover"}
+                />
+
+                {/* Caption */}
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-5 pb-10 pt-12 text-sm font-medium leading-snug text-white md:px-6">
+                  {slide.caption}
+                </figcaption>
+              </figure>
+          ))}
+        </div>
+
+        {/* Project number */}
+        <div className="pointer-events-none absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm">
+          <span className="text-sm font-black text-primary">{number}</span>
+        </div>
+
+        {slides.length > 1 && (
+            <>
+              {/* Counter */}
+              <div className="pointer-events-none absolute right-5 top-5 rounded-full bg-black/50 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-sm">
+                {active + 1} / {slides.length}
+              </div>
+
+              {/* Arrows */}
+              <button
+                  type="button"
+                  onClick={() => goTo(active - 1)}
+                  className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-primary shadow-md backdrop-blur-sm transition hover:bg-accent hover:text-white"
+                  aria-label="Previous photo"
+              >
+                <ChevronLeft className="h-5 w-5" strokeWidth={2.5} />
+              </button>
+
+              <button
+                  type="button"
+                  onClick={() => goTo(active + 1)}
+                  className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-primary shadow-md backdrop-blur-sm transition hover:bg-accent hover:text-white"
+                  aria-label="Next photo"
+              >
+                <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
+              </button>
+
+              {/* Dots */}
+              <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5">
+                {slides.map((slide, slideIndex) => (
+                    <button
+                        key={slide.src}
+                        type="button"
+                        onClick={() => goTo(slideIndex)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                            slideIndex === active ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+                        }`}
+                        aria-label={`Go to photo ${slideIndex + 1}`}
+                    />
+                ))}
+              </div>
+            </>
+        )}
+      </div>
+  )
+}
+
 const Impact = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const context = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
       const heading = containerRef.current?.querySelector(".work-heading")
       const intro = containerRef.current?.querySelector(".work-intro")
       const cards = containerRef.current?.querySelectorAll(".work-card")
@@ -182,7 +343,7 @@ const Impact = () => {
   return (
       <section
           id="our-work"
-          className="relative overflow-hidden bg-[#F3F4F2] py-24 md:py-36"
+          className="relative overflow-hidden bg-[#F3F4F2] py-20 md:py-28"
       >
         {/* Decorative earth background */}
         <div
@@ -238,53 +399,32 @@ const Impact = () => {
             </div>
           </div>
 
-          {/* Projects grid */}
-          <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-            {projects.map((project) => {
+          {/* Projects: one per row, photos and text side by side on large screens */}
+          <div className="flex flex-col gap-6 md:gap-8">
+            {projects.map((project, projectIndex) => {
               const Icon = project.icon
 
               return (
                   <article
                       key={project.number}
-                      className="work-card premium-card group overflow-hidden rounded-[2rem] bg-white"
+                      className={`work-card premium-card group overflow-hidden rounded-[2rem] bg-white lg:grid lg:grid-cols-2 ${projectIndex % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}
                   >
-                    {/* Project image */}
-                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#E8EDE5]">
-                      {/* Place project image here */}
-
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-primary/30">
-
-                        <span className="text-xs font-bold uppercase tracking-[0.2em]">
-                      <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-
-
-                      />
-                    </span>
-                      </div>
-
-                      {/* Image overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                      {/* Project number */}
-                      <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm">
-                    <span className="text-sm font-black text-primary">
-                      {project.number}
-                    </span>
-                      </div>
-                    </div>
+                    {/* Project photo gallery */}
+                    <WorkGallery
+                        slides={project.gallery as Slide[]}
+                        title={project.title}
+                        number={project.number}
+                    />
 
                     {/* Card content */}
-                    <div className="p-7 md:p-9">
+                    <div className="p-7 md:p-9 lg:p-10 lg:self-center">
                       {/* Icon and category */}
                       <div className="mb-6 flex items-center justify-between gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-white">
                           <Icon className="h-6 w-6" />
                         </div>
 
-                        <span className="text-right text-[10px] font-bold uppercase tracking-[0.2em] text-primary/50">
+                        <span className="text-right text-xs font-bold uppercase tracking-[0.2em] text-primary/50">
                       {project.category}
                     </span>
                       </div>
@@ -326,7 +466,7 @@ const Impact = () => {
           </div>
 
           {/* Bottom statement */}
-          <div className="bottom-statement mx-auto mt-16 max-w-4xl text-center md:mt-24">
+          <div className="bottom-statement mx-auto mt-16 max-w-4xl text-center md:mt-20">
             <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
               <Users className="h-6 w-6" />
             </div>
@@ -348,8 +488,11 @@ const Impact = () => {
             </p>
 
             {/* View more work button */}
-            <button className="btn-premium group mt-8 inline-flex items-center gap-4 rounded-full bg-primary py-2.5 pl-8 pr-2 text-sm font-bold text-white transition-all duration-500 hover:bg-accent hover:text-primary">
-              Explore Our Work
+            <Link
+                href="#projects"
+                className="btn-premium group mt-8 inline-flex items-center gap-4 rounded-full bg-primary py-2.5 pl-8 pr-2 text-sm font-bold text-white transition-all duration-500 hover:bg-accent hover:text-primary"
+            >
+              See Our Flagship Programmes
 
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary transition-transform duration-500 group-hover:scale-110">
               <ArrowRight
@@ -357,7 +500,7 @@ const Impact = () => {
                   strokeWidth={3}
               />
             </span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -4,44 +4,48 @@ import { CheckCircle2 } from "lucide-react"
 
 const WhyChooseUs = () => {
   const points = [
-    "Certified Professionals",
+    "Youth-Led",
     "Community Driven",
-    "Sustainable Innovation",
-    "Transparent Reporting",
-    "Measurable Impact",
+    "Grounded in Science",
+    "Practical Action",
+    "Stories That Drive Change",
     "Long-term Partnerships",
   ]
 
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden min-h-[700px] flex items-center">
+    <section id="why-us" className="relative py-20 md:py-28 overflow-hidden min-h-[700px] flex items-center">
       {/* Background Image with parallax */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src="/4.jpg"
-          alt="Sustainability initiative"
-          fill
-          className="object-cover brightness-[0.4] parallax scale-110"
-        />
+        {/* Taller than the section so the parallax shift never exposes a gap */}
+        <div className="parallax absolute inset-x-0 top-0 -bottom-24">
+          <Image
+            src="/work/advocacy-world-youth-day-audience.jpeg"
+            alt="Young people gathered for the World Youth Day commemoration in Lilongwe"
+            fill
+            sizes="100vw"
+            className="object-cover brightness-[0.4]"
+          />
+        </div>
         <div className="absolute inset-0 bg-primary/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/20 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-3xl glass-dark p-10 md:p-20 rounded-[40px] border-white/10 shadow-premium">
+        <div className="max-w-3xl glass-dark p-7 sm:p-10 md:p-20 rounded-[28px] md:rounded-[40px] border-white/10 shadow-premium">
           <div className="space-y-6">
             {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 border border-accent/30">*/}
             {/*  <span className="w-1.5 h-1.5 rounded-full bg-accent" />*/}
-            {/*  <span className="text-accent font-black text-[10px] uppercase tracking-[0.2em]">Why Us</span>*/}
+            {/*  <span className="text-accent font-black text-xs uppercase tracking-[0.2em]">Why Us</span>*/}
             {/*</div>*/}
             
-            <h2 className="text-5xl md:text-6xl font-black text-white leading-[0.95] tracking-tight">
-              Innovation that <br />
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[0.95] tracking-tight">
+              Change that <br />
               <span className="text-accent italic font-serif">lasts</span> generations.
             </h2>
             
             <p className="text-white/70 text-lg leading-relaxed max-w-xl">
-              We combine local expertise with global sustainability standards to 
-              deliver impactful results that bridge the gap between human progress and nature.
+              We combine local knowledge, environmental science and the energy of young
+              people to deliver practical solutions that last beyond a single project.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-x-12 gap-y-6 pt-8">
