@@ -23,9 +23,9 @@ const projects = [
   {
     number: "01",
     gallery: [
-      { src: "/work1.png", caption: "Lucky Sikelo receives his solar lamp from the Green Minds team" },
-      { src: "/work/greened-chinsapo-student.jpeg", caption: "A Form 3 student at Chinsapo Secondary School with her new solar desk lamp", fit: "contain" },
-      { src: "/work/greened-alex-mdowa.jpeg", caption: "Alex Mdowa, Standard 7 at Makeshi Primary School, ready to extend his study hours", fit: "contain" },
+      { src: "/work1.png", width: 1538, height: 1023, caption: "Lucky Sikelo receives his solar lamp from the Green Minds team" },
+      { src: "/work/greened-chinsapo-student.jpeg", width: 608, height: 1080, caption: "A Form 3 student at Chinsapo Secondary School with her new solar desk lamp" },
+      { src: "/work/greened-alex-mdowa.jpeg", width: 666, height: 887, caption: "Alex Mdowa, Standard 7 at Makeshi Primary School, ready to extend his study hours" },
     ],
     title: "Green-Ed Initiative",
     category: "Clean Energy & Education",
@@ -41,20 +41,20 @@ const projects = [
   {
     number: "02",
     gallery: [
-      { src: "/work2.jpeg", caption: "Domwe Primary School: climate change session with Standards 6, 7 and 8" },
-      { src: "/work/advocacy-domwe-session.jpeg", caption: "Learners at Domwe Primary School during the climate session" },
-      { src: "/work/advocacy-glynn-jonnes.jpeg", caption: "Glynn Jonnes Academy: learning about the 3 R's" },
-      { src: "/work/advocacy-glynn-jonnes-class.jpeg", caption: "Reduce, Reuse, Recycle lesson at Glynn Jonnes Academy" },
-      { src: "/work/advocacy-16-days.jpeg", caption: "16 Days of Activism at LUANAR Bunda Campus" },
-      { src: "/work/advocacy-girls-green-futures.jpeg", caption: "Girls & Green Futures webinar", fit: "contain" },
-      { src: "/work/advocacy-webinar-session.jpeg", caption: "Young women and climate leaders live on the Girls & Green Futures webinar", fit: "contain" },
-      { src: "/work/advocacy-climate-justice-walk.jpeg", caption: "Climate Justice Walk with the Clean Cities Project", fit: "contain" },
-      { src: "/work/advocacy-youth-symposium.jpeg", caption: "National Youth Symposium on Public Debt", fit: "contain" },
-      { src: "/work/advocacy-world-youth-day.jpeg", caption: "World Youth Day at Nanjati CDS, Lilongwe" },
-      { src: "/work/advocacy-world-youth-day-panel.jpeg", caption: "World Youth Day panel discussion on youth participation in the economy" },
-      { src: "/work/advocacy-world-youth-day-audience.jpeg", caption: "Young people at the World Youth Day commemoration" },
-      { src: "/work/advocacy-youth-summit.jpeg", caption: "2026 National Youth Summit at BICC, Lilongwe", fit: "contain" },
-      { src: "/work/advocacy-youth-summit-bicc.jpeg", caption: "Representing Green Minds at the National Youth Summit", fit: "contain" },
+      { src: "/work2.jpeg", width: 1080, height: 608, caption: "Domwe Primary School: climate change session with Standards 6, 7 and 8" },
+      { src: "/work/advocacy-domwe-session.jpeg", width: 1080, height: 608, caption: "Learners at Domwe Primary School during the climate session" },
+      { src: "/work/advocacy-glynn-jonnes.jpeg", width: 1080, height: 810, caption: "Glynn Jonnes Academy: learning about the 3 R's" },
+      { src: "/work/advocacy-glynn-jonnes-class.jpeg", width: 1080, height: 608, caption: "Reduce, Reuse, Recycle lesson at Glynn Jonnes Academy" },
+      { src: "/work/advocacy-16-days.jpeg", width: 896, height: 503, caption: "16 Days of Activism at LUANAR Bunda Campus" },
+      { src: "/work/advocacy-girls-green-futures.jpeg", width: 896, height: 844, caption: "Girls & Green Futures webinar" },
+      { src: "/work/advocacy-webinar-session.jpeg", width: 881, height: 473, caption: "Young women and climate leaders live on the Girls & Green Futures webinar" },
+      { src: "/work/advocacy-climate-justice-walk.jpeg", width: 952, height: 1170, caption: "Climate Justice Walk with the Clean Cities Project" },
+      { src: "/work/advocacy-youth-symposium.jpeg", width: 608, height: 1080, caption: "National Youth Symposium on Public Debt" },
+      { src: "/work/advocacy-world-youth-day.jpeg", width: 1412, height: 1059, caption: "World Youth Day at Nanjati CDS, Lilongwe" },
+      { src: "/work/advocacy-world-youth-day-panel.jpeg", width: 1412, height: 685, caption: "World Youth Day panel discussion on youth participation in the economy" },
+      { src: "/work/advocacy-world-youth-day-audience.jpeg", width: 1412, height: 1059, caption: "Young people at the World Youth Day commemoration" },
+      { src: "/work/advocacy-youth-summit.jpeg", width: 523, height: 697, caption: "2026 National Youth Summit at BICC, Lilongwe" },
+      { src: "/work/advocacy-youth-summit-bicc.jpeg", width: 587, height: 783, caption: "Representing Green Minds at the National Youth Summit" },
     ],
     title: "Environmental Advocacy & Campaigns",
     category: "Climate Action & Youth Engagement",
@@ -73,11 +73,11 @@ const projects = [
   {
     number: "03",
     gallery: [
-      { src: "/work3.jpeg", caption: "Tree planting at Mbidzi Secondary School" },
-      { src: "/work/resources-mbidzi-seedlings.jpeg", caption: "Mbidzi learners with their seedlings" },
-      { src: "/work/resources-mbidzi-learners.jpeg", caption: "Learners and the Green Minds team ready to plant" },
-      { src: "/work/resources-domwe-bins.jpeg", caption: "Donating classroom waste bins at Domwe Primary School" },
-      { src: "/work/resources-domwe-learners.jpeg", caption: "Domwe Primary School learners", fit: "contain" },
+      { src: "/work3.jpeg", width: 1080, height: 810, caption: "Tree planting at Mbidzi Secondary School" },
+      { src: "/work/resources-mbidzi-seedlings.jpeg", width: 1080, height: 608, caption: "Mbidzi learners with their seedlings" },
+      { src: "/work/resources-mbidzi-learners.jpeg", width: 1080, height: 608, caption: "Learners and the Green Minds team ready to plant" },
+      { src: "/work/resources-domwe-bins.jpeg", width: 1080, height: 608, caption: "Donating classroom waste bins at Domwe Primary School" },
+      { src: "/work/resources-domwe-learners.jpeg", width: 900, height: 916, caption: "Domwe Primary School learners" },
     ],
     title: "Resource Distribution",
     category: "Community & Environmental Resources",
@@ -93,9 +93,9 @@ const projects = [
   {
     number: "04",
     gallery: [
-      { src: "/work4.png", caption: "Documenting flooding in Mangochi" },
-      { src: "/work/witness-kumwenda-interview.jpeg", caption: "Interviewing Mrs Katherine Kumwenda about how floods have affected her family", fit: "contain" },
-      { src: "/work/witness-poster.jpeg", caption: "Climate Witness: Living the Crisis", fit: "contain" },
+      { src: "/work4.png", width: 1448, height: 1086, caption: "Documenting flooding in Mangochi" },
+      { src: "/work/witness-kumwenda-interview.jpeg", width: 690, height: 651, caption: "Interviewing Mrs Katherine Kumwenda about how floods have affected her family" },
+      { src: "/work/witness-poster.jpeg", width: 629, height: 844, caption: "Climate Witness: Living the Crisis" },
     ],
     title: "Climate Witness: Living the Crisis",
     category: "Climate Stories & Community Resilience",
@@ -112,8 +112,80 @@ const projects = [
 
 type Slide = {
   src: string
+  width: number
+  height: number
   caption: string
-  fit?: "cover" | "contain"
+}
+
+// A photo only fills the frame when that needs no enlarging and crops at most
+// 30% of it; otherwise it is shown whole (on a blurred copy of itself), so
+// small or oddly shaped photos stay sharp at every screen size.
+const MAX_CROP = 0.3
+
+const GallerySlide = ({
+  slide,
+  index,
+  total,
+}: {
+  slide: Slide
+  index: number
+  total: number
+}) => {
+  const frameRef = useRef<HTMLElement>(null)
+  const [fill, setFill] = useState(false)
+
+  useEffect(() => {
+    const frame = frameRef.current
+    if (!frame) return
+
+    const update = () => {
+      const { width, height } = frame.getBoundingClientRect()
+      if (!width || !height) return
+      const scale = Math.max(width / slide.width, height / slide.height)
+      const visible = (width * height) / (slide.width * scale * slide.height * scale)
+      setFill(scale <= 1 && visible >= 1 - MAX_CROP)
+    }
+
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(frame)
+    return () => observer.disconnect()
+  }, [slide.width, slide.height])
+
+  return (
+      <figure
+          ref={frameRef}
+          className="relative h-full w-full shrink-0 snap-center overflow-hidden"
+          aria-roledescription="slide"
+          aria-label={`${index + 1} of ${total}`}
+      >
+        {/* Blurred backdrop behind photos shown whole */}
+        {!fill && (
+            <Image
+                src={slide.src}
+                alt=""
+                fill
+                sizes="10vw"
+                className="scale-110 object-cover blur-2xl brightness-75"
+                aria-hidden="true"
+            />
+        )}
+
+        <Image
+            src={slide.src}
+            alt={slide.caption}
+            fill
+            quality={90}
+            sizes={`(min-width: 1024px) ${Math.min(slide.width, 1200)}px, 100vw`}
+            className={fill ? "object-cover" : "object-contain"}
+        />
+
+        {/* Caption */}
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-5 pb-10 pt-12 text-sm font-medium leading-snug text-white md:px-6">
+          {slide.caption}
+        </figcaption>
+      </figure>
+  )
 }
 
 const WorkGallery = ({
@@ -142,7 +214,10 @@ const WorkGallery = ({
   }
 
   return (
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#E8EDE5] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[440px]">
+      // On large screens the photo keeps a fixed 4:3 frame (so photos fill it
+      // without being enlarged) and the space below holds thumbnails
+      <div className="bg-[#E8EDE5] lg:flex lg:h-full lg:flex-col">
+      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[4/3]">
         {/* Slides */}
         <div
             ref={trackRef}
@@ -152,37 +227,12 @@ const WorkGallery = ({
             aria-label={`${title} photos`}
         >
           {slides.map((slide, slideIndex) => (
-              <figure
+              <GallerySlide
                   key={slide.src}
-                  className="relative h-full w-full shrink-0 snap-center overflow-hidden"
-                  aria-roledescription="slide"
-                  aria-label={`${slideIndex + 1} of ${slides.length}`}
-              >
-                {/* Blurred backdrop for portrait photos */}
-                {slide.fit === "contain" && (
-                    <Image
-                        src={slide.src}
-                        alt=""
-                        fill
-                        sizes="10vw"
-                        className="scale-110 object-cover blur-2xl brightness-75"
-                        aria-hidden="true"
-                    />
-                )}
-
-                <Image
-                    src={slide.src}
-                    alt={slide.caption}
-                    fill
-                    sizes="(min-width: 1280px) 608px, (min-width: 1024px) 50vw, 100vw"
-                    className={slide.fit === "contain" ? "object-contain" : "object-cover"}
-                />
-
-                {/* Caption */}
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-5 pb-10 pt-12 text-sm font-medium leading-snug text-white md:px-6">
-                  {slide.caption}
-                </figcaption>
-              </figure>
+                  slide={slide}
+                  index={slideIndex}
+                  total={slides.length}
+              />
           ))}
         </div>
 
@@ -217,8 +267,8 @@ const WorkGallery = ({
                 <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
               </button>
 
-              {/* Dots */}
-              <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5">
+              {/* Dots (thumbnails replace them on large screens) */}
+              <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5 lg:hidden">
                 {slides.map((slide, slideIndex) => (
                     <button
                         key={slide.src}
@@ -233,6 +283,35 @@ const WorkGallery = ({
               </div>
             </>
         )}
+      </div>
+
+      {/* Thumbnails */}
+      {slides.length > 1 && (
+          <div className="hidden grid-cols-7 gap-2 p-3 lg:grid">
+            {slides.map((slide, slideIndex) => (
+                <button
+                    key={slide.src}
+                    type="button"
+                    onClick={() => goTo(slideIndex)}
+                    className={`relative aspect-square overflow-hidden rounded-lg transition duration-300 ${
+                        slideIndex === active
+                            ? "ring-2 ring-accent ring-offset-2 ring-offset-[#E8EDE5]"
+                            : "opacity-60 hover:opacity-100"
+                    }`}
+                    aria-label={`Show photo ${slideIndex + 1}: ${slide.caption}`}
+                    aria-current={slideIndex === active}
+                >
+                  <Image
+                      src={slide.src}
+                      alt=""
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                  />
+                </button>
+            ))}
+          </div>
+      )}
       </div>
   )
 }
@@ -411,7 +490,7 @@ const Impact = () => {
                   >
                     {/* Project photo gallery */}
                     <WorkGallery
-                        slides={project.gallery as Slide[]}
+                        slides={project.gallery}
                         title={project.title}
                         number={project.number}
                     />
