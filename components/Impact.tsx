@@ -214,10 +214,7 @@ const WorkGallery = ({
   }
 
   return (
-      // On large screens the photo keeps a fixed 4:3 frame (so photos fill it
-      // without being enlarged) and the space below holds thumbnails
-      <div className="bg-[#E8EDE5] lg:flex lg:h-full lg:flex-col">
-      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[4/3]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#E8EDE5] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[455px]">
         {/* Slides */}
         <div
             ref={trackRef}
@@ -267,8 +264,8 @@ const WorkGallery = ({
                 <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
               </button>
 
-              {/* Dots (thumbnails replace them on large screens) */}
-              <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5 lg:hidden">
+              {/* Dots */}
+              <div className="absolute inset-x-0 bottom-4 flex justify-center gap-1.5">
                 {slides.map((slide, slideIndex) => (
                     <button
                         key={slide.src}
@@ -283,35 +280,6 @@ const WorkGallery = ({
               </div>
             </>
         )}
-      </div>
-
-      {/* Thumbnails */}
-      {slides.length > 1 && (
-          <div className="hidden grid-cols-7 gap-2 p-3 lg:grid">
-            {slides.map((slide, slideIndex) => (
-                <button
-                    key={slide.src}
-                    type="button"
-                    onClick={() => goTo(slideIndex)}
-                    className={`relative aspect-square overflow-hidden rounded-lg transition duration-300 ${
-                        slideIndex === active
-                            ? "ring-2 ring-accent ring-offset-2 ring-offset-[#E8EDE5]"
-                            : "opacity-60 hover:opacity-100"
-                    }`}
-                    aria-label={`Show photo ${slideIndex + 1}: ${slide.caption}`}
-                    aria-current={slideIndex === active}
-                >
-                  <Image
-                      src={slide.src}
-                      alt=""
-                      fill
-                      sizes="96px"
-                      className="object-cover"
-                  />
-                </button>
-            ))}
-          </div>
-      )}
       </div>
   )
 }
