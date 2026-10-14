@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Facebook,
   Twitter,
@@ -10,7 +9,6 @@ import {
   Linkedin,
   Mail,
   ArrowUp,
-  ExternalLink,
 } from "lucide-react";
 
 // TODO: add the organisation's social media profile URLs
@@ -239,119 +237,33 @@ const Footer = () => {
 
 
 
-          {/* Technology Partner */}
-          <div className="mt-20 pt-12 border-t border-white/10">
+          {/* Bottom Bar */}
+          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
 
-            <div className="bg-white/5 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
-
-
-              <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-
-
-                {/* Transparent CodeCraft Cloud Logo */}
-                <div className="flex shrink-0 items-center justify-center">
-
-                  <Image
-                      src="/logo1.png"
-                      width={150}
-                      height={70}
-                      alt="CodeCraft Cloud Logo"
-                      className="h-auto w-[120px] md:w-[150px] object-contain"
-                  />
-
-                </div>
-
-
-
-                <div>
-
-                  <p className="text-accent text-xs uppercase tracking-widest font-black mb-2">
-                    Technology Partner
-                  </p>
-
-
-                  <h4 className="text-xl font-black">
-                    CodeCraft Cloud
-                  </h4>
-
-
-                  <p className="text-white/60 text-sm mt-2 max-w-md">
-                    Building scalable digital experiences through modern software
-                    development, cloud solutions, and innovative technology.
-                  </p>
-
-                </div>
-
-
-              </div>
-
-
-
+            <p className="text-white/50 text-sm text-center md:text-left">
+              © {new Date().getFullYear()} Green Minds Malawi · Powered and supported by{" "}
               <a
                   href="https://www.codecraftcloud.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-accent font-bold hover:text-white transition"
+                  className="font-semibold text-white hover:text-accent transition"
               >
-                Visit CodeCraft Cloud
-                <ExternalLink className="w-4 h-4" />
+                CodeCraft Cloud
               </a>
-
-
-            </div>
-
-          </div>
-
-
-
-          {/* Bottom Bar */}
-          <div className="mt-12 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-white/40 text-xs font-bold uppercase tracking-widest">
-
-
-            <p>
-              © {new Date().getFullYear()} Green Minds Malawi. All rights reserved.
             </p>
-
-
 
             <button
                 onClick={scrollToTop}
-                className="group flex items-center gap-3 hover:text-accent transition"
+                className="group flex items-center gap-3 text-white/40 text-xs font-bold uppercase tracking-widest hover:text-accent transition"
             >
-
               Back to Top
 
-
               <span className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-accent transition">
-
-              <ArrowUp className="w-4 h-4" />
-
-            </span>
-
-
+                <ArrowUp className="w-4 h-4" />
+              </span>
             </button>
 
-
           </div>
-
-
-
-          {/* Developer Credit */}
-          <div className="mt-6 text-center text-white/30 text-xs">
-
-            Digital experience designed and developed by{" "}
-
-            <a
-                href="https://www.codecraftcloud.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent font-bold hover:text-white transition"
-            >
-              CodeCraft Cloud
-            </a>
-
-          </div>
-
 
         </div>
       </footer>

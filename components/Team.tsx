@@ -1,38 +1,28 @@
 import React from "react"
 import Image from "next/image"
-import { Github, Twitter, Linkedin } from "lucide-react"
-
-const socials = [
-  { label: "Twitter", icon: Twitter },
-  { label: "LinkedIn", icon: Linkedin },
-  { label: "GitHub", icon: Github },
-]
+import { Linkedin } from "lucide-react"
 
 const Team = () => {
   const team = [
     {
       name: "Wayne Francis Hiwa",
-      role: "Founding Director",
-      bio: "BSc Environmental Science.",
-      image: "/wayne.jpeg"
+      image: "/wayne.jpeg",
+      linkedin: "https://www.linkedin.com/in/wayne-hiwa-b275a424a"
     },
     {
       name: "Wongani Mulanga",
-      role: "Executive Director",
-      bio: "Bsc Environmental Science",
-      image: "/wongie.jpeg"
+      image: "/wongie.jpeg",
+      linkedin: "https://www.linkedin.com/in/wongani-mulanga"
     },
     {
       name: "Lughano Mwalyambwire",
-      role: "Communications and Operations Officer",
-      bio: "Bsc Environmental Science",
-      image: "/lughano.jpeg"
+      image: "/lughano.jpeg",
+      linkedin: "https://www.linkedin.com/in/lughano-mwalyambwire-463415282"
     },
     {
       name: "Pertunia Jesman",
-      role: "General Secretary",
-      bio: "Bsc Agribusiness Management",
-      image: "/pertunia.jpeg"
+      image: "/pertunia.jpeg",
+      linkedin: "https://www.linkedin.com/in/pertunia-jesman-97a957349"
     }
   ]
 
@@ -66,27 +56,21 @@ const Team = () => {
                   sizes="(min-width: 1280px) 280px, (min-width: 1024px) 25vw, 50vw"
                   className="object-cover object-top transition-transform duration-1000 group-hover:scale-110"
                 />
-                {/* Social links: revealed on hover or keyboard focus, always shown on touch screens */}
+                {/* LinkedIn link: revealed on hover or keyboard focus, always shown on touch screens */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100 transition-all duration-500 flex items-end justify-center pb-4 sm:pb-8 translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 [@media(hover:none)]:translate-y-0">
-                  <div className="flex gap-2 sm:gap-3">
-                    {socials.map(({ label, icon: Icon }) => (
-                      <a
-                        key={label}
-                        // TODO: add each member's profile URL
-                        href="#"
-                        aria-label={`${member.name} on ${label}`}
-                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-all duration-300"
-                      >
-                        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </a>
-                    ))}
-                  </div>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name} on LinkedIn`}
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-all duration-300"
+                  >
+                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </a>
                 </div>
               </div>
               <div className="px-1 pb-1 sm:px-2 sm:pb-2">
-                <h3 className="text-base sm:text-xl font-black text-primary mb-1 group-hover:text-accent transition-colors">{member.name}</h3>
-                <p className="text-accent font-bold text-xs uppercase tracking-wider sm:tracking-widest mb-2 sm:mb-4">{member.role}</p>
-                <p className="text-muted text-sm leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">{member.bio}</p>
+                <h3 className="text-base sm:text-xl font-black text-primary group-hover:text-accent transition-colors">{member.name}</h3>
               </div>
             </div>
           ))}
