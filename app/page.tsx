@@ -5,6 +5,7 @@ import WhoWeAre from "@/components/WhoWeAre";
 import FocusAreas from "@/components/FocusAreas";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Team from "@/components/Team";
+import Board from "@/components/Board";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
@@ -25,6 +26,9 @@ export default function Home() {
       </div>
       <div className="reveal">
         <Team />
+      </div>
+      <div className="reveal">
+        <Board />
       </div>
       <div className="reveal">
         <Impact />

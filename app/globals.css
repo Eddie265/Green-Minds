@@ -63,6 +63,11 @@
   }
 }
 
+/* Stop the page scrolling behind an open bio dialog */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 /* Custom animations for GSAP (only hidden when JS can reveal them) */
 .js .reveal {
   opacity: 0;

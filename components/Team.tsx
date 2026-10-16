@@ -1,40 +1,39 @@
 import React from "react"
-import Image from "next/image"
-import { Linkedin } from "lucide-react"
+import ProfileGrid, { type Profile } from "@/components/ProfileGrid"
+
+const team: Profile[] = [
+  {
+    name: "Wayne Francis Hiwa",
+    image: "/wayne.jpeg",
+    linkedin: "https://www.linkedin.com/in/wayne-hiwa-b275a424a",
+    bio: "Wayne is an environmental science graduate passionate about sustainability, environmental protection, and youth empowerment. He previously served as an Environmental Officer at Green Impact Technologies, where he gained practical experience in environmental management and sustainability initiatives. Through Green Minds Malawi, he is committed to promoting environmental awareness, empowering young people, and driving community-led initiatives that address environmental challenges. He believes that equipping young people with knowledge and opportunities is key to building a greener, more sustainable future for Malawi and beyond.",
+  },
+  {
+    name: "Wongani Mulanga",
+    image: "/wongie.jpeg",
+    linkedin: "https://www.linkedin.com/in/wongani-mulanga",
+    bio: "Wongani is a climate educator who works to help young people understand climate change and act on it within their own communities. She holds a BSc in Environmental Science from LUANAR and works as a Programmes Officer at Go Fund a Girl Child. She is the founder of Her Climate Lab, a girl-led climate education programme that has grown beyond the school where it began, and has taken part in UNFCCC climate negotiation sessions. She also speaks to students and young people on climate and environmental issues, career development, and encouraging young women to pursue their ambitions. Through Green Minds, she leads partnerships and external representation, building the relationships that carry the organization’s work into schools and communities.",
+  },
+  {
+    name: "Lughano Mwalyambwire",
+    image: "/lughano.jpeg",
+    linkedin: "https://www.linkedin.com/in/lughano-mwalyambwire-463415282",
+    bio: "Lughano holds a BSc in Environmental Science and brings experience in GIS and drone mapping, including humanitarian mapping during Cyclone Freddy. His background in monitoring, evaluation and fieldwork spans several sectors. He has worked as an M&E field consultant on a UN Migration project, supervised the evaluation of the National Numeracy Programme in primary schools across Malawi, and carried out fieldwork with the Ministry of Lands, UNFPA and the University of Chicago's BEFIT programme. He has helped build the Green Ed Initiative and Climate Witness, bringing climate education and community-based environmental documentation to communities across Malawi.",
+  },
+  {
+    name: "Pertunia Jesman",
+    image: "/pertunia.jpeg",
+    linkedin: "https://www.linkedin.com/in/pertunia-jesman-97a957349",
+    bio: "Pertunia is an agribusiness professional focused on agricultural commercialisation as a way to improve livelihoods, develop sustainable enterprises and manage the environment. She holds a BSc in Agribusiness Management from LUANAR and currently works with the World Bank-funded Agricultural Commercialization Project (AGCOM II), also known as the Malawi Food Systems and Resilience Program, under the Ministry of Agriculture. There she supports smallholder producer organisations through concept note development, business plan assessment, matching-grant processes and field-based monitoring, with an emphasis on environmentally responsible business practices. Through Green Minds, she supports initiatives that promote environmental education and create sustainable opportunities for young people and local communities.",
+  },
+]
 
 const Team = () => {
-  const team = [
-    {
-      name: "Wayne Francis Hiwa",
-      image: "/wayne.jpeg",
-      linkedin: "https://www.linkedin.com/in/wayne-hiwa-b275a424a"
-    },
-    {
-      name: "Wongani Mulanga",
-      image: "/wongie.jpeg",
-      linkedin: "https://www.linkedin.com/in/wongani-mulanga"
-    },
-    {
-      name: "Lughano Mwalyambwire",
-      image: "/lughano.jpeg",
-      linkedin: "https://www.linkedin.com/in/lughano-mwalyambwire-463415282"
-    },
-    {
-      name: "Pertunia Jesman",
-      image: "/pertunia.jpeg",
-      linkedin: "https://www.linkedin.com/in/pertunia-jesman-97a957349"
-    }
-  ]
-
   return (
     <section className="py-20 md:py-28 bg-white" id="team">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
           <div className="max-w-2xl">
-            {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-4">*/}
-            {/*  <span className="w-1.5 h-1.5 rounded-full bg-accent" />*/}
-            {/*  <span className="text-accent font-black text-xs uppercase tracking-[0.2em]">Our Experts</span>*/}
-            {/*</div>*/}
             <h2 className="text-5xl md:text-6xl font-black text-primary leading-[0.95] tracking-tight">
               Driven by passion, <br />
               guided by science.
@@ -45,36 +44,10 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-8">
-          {team.map((member, i) => (
-            <div key={i} className="group premium-card p-2 sm:p-4">
-              <div className="relative aspect-[4/5] rounded-2xl sm:rounded-[24px] overflow-hidden mb-4 sm:mb-6">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  sizes="(min-width: 1280px) 280px, (min-width: 1024px) 25vw, 50vw"
-                  className="object-cover object-top transition-transform duration-1000 group-hover:scale-110"
-                />
-                {/* LinkedIn link: revealed on hover or keyboard focus, always shown on touch screens */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100 transition-all duration-500 flex items-end justify-center pb-4 sm:pb-8 translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 [@media(hover:none)]:translate-y-0">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${member.name} on LinkedIn`}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-all duration-300"
-                  >
-                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </a>
-                </div>
-              </div>
-              <div className="px-1 pb-1 sm:px-2 sm:pb-2">
-                <h3 className="text-base sm:text-xl font-black text-primary group-hover:text-accent transition-colors">{member.name}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProfileGrid
+          people={team}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-8"
+        />
       </div>
     </section>
   )

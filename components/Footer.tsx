@@ -23,6 +23,7 @@ const navigation = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about-us" },
   { label: "Team", href: "#team" },
+  { label: "Board", href: "#board" },
   { label: "Our Work", href: "#our-work" },
   { label: "Projects", href: "#projects" },
   { label: "Focus Areas", href: "#focus-areas" },
