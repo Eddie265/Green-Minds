@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const description =
   "Green Minds Malawi is a youth-led organisation empowering young people and communities through climate education, clean energy access, environmental conservation and climate justice advocacy.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.greenmindsmw.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Green Minds Malawi | Empowering Young Minds, Building Greener Futures",
     template: "%s | Green Minds Malawi"
