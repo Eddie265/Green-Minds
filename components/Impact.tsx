@@ -16,17 +16,14 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { EarthGlobe } from "@/components/icons/ImpactIcons"
 import Image from "next/image";
+import type { GalleryPhoto, ProgrammeId } from "@/lib/default-content";
 
 gsap.registerPlugin(ScrollTrigger)
 
 const projects = [
   {
     number: "01",
-    gallery: [
-      { src: "/work1.png", width: 1538, height: 1023, caption: "Lucky Sikelo receives his solar lamp from the Green Minds team" },
-      { src: "/work/greened-chinsapo-student.jpeg", width: 608, height: 1080, caption: "A Form 3 student at Chinsapo Secondary School with her new solar desk lamp" },
-      { src: "/work/greened-alex-mdowa.jpeg", width: 666, height: 887, caption: "Alex Mdowa, Standard 7 at Makeshi Primary School, ready to extend his study hours" },
-    ],
+    id: "green-ed" as ProgrammeId,
     title: "Green-Ed Initiative",
     category: "Clean Energy & Education",
     description:
@@ -40,22 +37,7 @@ const projects = [
   },
   {
     number: "02",
-    gallery: [
-      { src: "/work2.jpeg", width: 1080, height: 608, caption: "Domwe Primary School: climate change session with Standards 6, 7 and 8" },
-      { src: "/work/advocacy-domwe-session.jpeg", width: 1080, height: 608, caption: "Learners at Domwe Primary School during the climate session" },
-      { src: "/work/advocacy-glynn-jonnes.jpeg", width: 1080, height: 810, caption: "Glynn Jonnes Academy: learning about the 3 R's" },
-      { src: "/work/advocacy-glynn-jonnes-class.jpeg", width: 1080, height: 608, caption: "Reduce, Reuse, Recycle lesson at Glynn Jonnes Academy" },
-      { src: "/work/advocacy-16-days.jpeg", width: 896, height: 503, caption: "16 Days of Activism at LUANAR Bunda Campus" },
-      { src: "/work/advocacy-girls-green-futures.jpeg", width: 896, height: 844, caption: "Girls & Green Futures webinar" },
-      { src: "/work/advocacy-webinar-session.jpeg", width: 881, height: 473, caption: "Young women and climate leaders live on the Girls & Green Futures webinar" },
-      { src: "/work/advocacy-climate-justice-walk.jpeg", width: 952, height: 1170, caption: "Climate Justice Walk with the Clean Cities Project" },
-      { src: "/work/advocacy-youth-symposium.jpeg", width: 608, height: 1080, caption: "National Youth Symposium on Public Debt" },
-      { src: "/work/advocacy-world-youth-day.jpeg", width: 1412, height: 1059, caption: "World Youth Day at Nanjati CDS, Lilongwe" },
-      { src: "/work/advocacy-world-youth-day-panel.jpeg", width: 1412, height: 685, caption: "World Youth Day panel discussion on youth participation in the economy" },
-      { src: "/work/advocacy-world-youth-day-audience.jpeg", width: 1412, height: 1059, caption: "Young people at the World Youth Day commemoration" },
-      { src: "/work/advocacy-youth-summit.jpeg", width: 523, height: 697, caption: "2026 National Youth Summit at BICC, Lilongwe" },
-      { src: "/work/advocacy-youth-summit-bicc.jpeg", width: 587, height: 783, caption: "Representing Green Minds at the National Youth Summit" },
-    ],
+    id: "advocacy" as ProgrammeId,
     title: "Environmental Advocacy & Campaigns",
     category: "Climate Action & Youth Engagement",
     description:
@@ -72,13 +54,7 @@ const projects = [
   },
   {
     number: "03",
-    gallery: [
-      { src: "/work3.jpeg", width: 1080, height: 810, caption: "Tree planting at Mbidzi Secondary School" },
-      { src: "/work/resources-mbidzi-seedlings.jpeg", width: 1080, height: 608, caption: "Mbidzi learners with their seedlings" },
-      { src: "/work/resources-mbidzi-learners.jpeg", width: 1080, height: 608, caption: "Learners and the Green Minds team ready to plant" },
-      { src: "/work/resources-domwe-bins.jpeg", width: 1080, height: 608, caption: "Donating classroom waste bins at Domwe Primary School" },
-      { src: "/work/resources-domwe-learners.jpeg", width: 900, height: 916, caption: "Domwe Primary School learners" },
-    ],
+    id: "resources" as ProgrammeId,
     title: "Resource Distribution",
     category: "Community & Environmental Resources",
     description:
@@ -92,11 +68,7 @@ const projects = [
   },
   {
     number: "04",
-    gallery: [
-      { src: "/work4.png", width: 1448, height: 1086, caption: "Documenting flooding in Mangochi" },
-      { src: "/work/witness-kumwenda-interview.jpeg", width: 690, height: 651, caption: "Interviewing Mrs Katherine Kumwenda about how floods have affected her family" },
-      { src: "/work/witness-poster.jpeg", width: 629, height: 844, caption: "Climate Witness: Living the Crisis" },
-    ],
+    id: "climate-witness" as ProgrammeId,
     title: "Climate Witness: Living the Crisis",
     category: "Climate Stories & Community Resilience",
     description:
@@ -110,12 +82,7 @@ const projects = [
   },
 ]
 
-type Slide = {
-  src: string
-  width: number
-  height: number
-  caption: string
-}
+type Slide = GalleryPhoto
 
 // A photo only fills the frame when that needs no enlarging and crops at most
 // 30% of it; otherwise it is shown whole (on a blurred copy of itself), so
@@ -284,7 +251,7 @@ const WorkGallery = ({
   )
 }
 
-const Impact = () => {
+const Impact = ({ galleries }: { galleries: Record<ProgrammeId, GalleryPhoto[]> }) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -458,7 +425,7 @@ const Impact = () => {
                   >
                     {/* Project photo gallery */}
                     <WorkGallery
-                        slides={project.gallery}
+                        slides={galleries[project.id] ?? []}
                         title={project.title}
                         number={project.number}
                     />

@@ -11,8 +11,11 @@ import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { GSAPInitializer } from "@/components/GSAPInitializer";
+import { getGalleries } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const galleries = await getGalleries();
+
   return (
     <div className="flex flex-col min-h-screen">
       <GSAPInitializer />
@@ -31,7 +34,7 @@ export default function Home() {
         <Board />
       </div>
       <div className="reveal">
-        <Impact />
+        <Impact galleries={galleries} />
       </div>
       <div className="reveal">
         <FeaturedProjects />

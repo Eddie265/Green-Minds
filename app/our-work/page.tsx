@@ -4,6 +4,7 @@ import Impact from "@/components/Impact";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Footer from "@/components/Footer";
 import { GSAPInitializer } from "@/components/GSAPInitializer";
+import { getGalleries } from "@/lib/content";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
@@ -12,7 +13,9 @@ export const metadata = pageMetadata(
   "/our-work"
 );
 
-export default function OurWorkPage() {
+export default async function OurWorkPage() {
+  const galleries = await getGalleries();
+
   return (
     <div className="flex flex-col min-h-screen">
       <GSAPInitializer />
@@ -23,7 +26,7 @@ export default function OurWorkPage() {
         intro="From solar lamps for learners to documenting communities living through the climate crisis, here is what we have delivered so far."
       />
       <div className="reveal">
-        <Impact />
+        <Impact galleries={galleries} />
       </div>
       <div className="reveal">
         <FeaturedProjects />
