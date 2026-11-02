@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { socialLinks } from "@/lib/site";
 import {
   Facebook,
   Twitter,
@@ -11,31 +12,31 @@ import {
   ArrowUp,
 } from "lucide-react";
 
-// TODO: add the organisation's social media profile URLs
+// TODO: add the organisation's Twitter and LinkedIn profile URLs
 const socials = [
-  { label: "Facebook", icon: Facebook, href: "#" },
+  { label: "Facebook", icon: Facebook, href: socialLinks.facebook },
   { label: "Twitter", icon: Twitter, href: "#" },
-  { label: "Instagram", icon: Instagram, href: "#" },
+  { label: "Instagram", icon: Instagram, href: socialLinks.instagram },
   { label: "LinkedIn", icon: Linkedin, href: "#" },
 ];
 
 const navigation = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about-us" },
-  { label: "Team", href: "#team" },
-  { label: "Board", href: "#board" },
-  { label: "Our Work", href: "#our-work" },
-  { label: "Projects", href: "#projects" },
-  { label: "Focus Areas", href: "#focus-areas" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Team", href: "/team" },
+  { label: "Board", href: "/team#board" },
+  { label: "Our Work", href: "/our-work" },
+  { label: "Projects", href: "/our-work#projects" },
+  { label: "Focus Areas", href: "/about#focus-areas" },
+  { label: "Contact", href: "/get-involved#contact" },
 ];
 
 const getInvolved = [
-  { label: "Volunteer", href: "#contact" },
-  { label: "Partner With Us", href: "#contact" },
+  { label: "Volunteer", href: "/get-involved#contact" },
+  { label: "Partner With Us", href: "/get-involved#contact" },
   // TODO: point Donate at the ZonsePay checkout once it is integrated
-  { label: "Donate", href: "#contact" },
-  { label: "Why Green Minds", href: "#why-us" },
+  { label: "Donate", href: "/get-involved#contact" },
+  { label: "Why Green Minds", href: "/about#why-us" },
 ];
 
 const Footer = () => {

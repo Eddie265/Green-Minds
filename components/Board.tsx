@@ -5,16 +5,19 @@ const board: Profile[] = [
   {
     name: "Dr. Josephine Marion Zimba-Chirwa",
     image: "/Josephine.jpeg",
+    linkedin: "https://www.linkedin.com/in/josephine-marion-zimba-69a8002a4",
     bio: "Dr. Zimba-Chirwa is a Lecturer in Environment and Development at LUANAR. She holds a PhD in Environmental Geography and Earth Sciences from the University of Glasgow, with a particular focus on situated resilience to climate change. Her postgraduate research has examined how environmental challenges are experienced differently by urban and rural communities, and the distinct ways each responds to them. She is a member of the Malawi Higher Education Institutions Network on Climate Change Learning and Coordinator of the Bunda Environmental Club. Overall, her work focuses on helping communities become more resilient to environmental change.",
   },
   {
     name: "Richard Chikonga",
     image: "/Richard.jpeg",
+    linkedin: "https://www.linkedin.com/in/richard-chikonga-49037a77",
     bio: "A management systems specialist with extensive experience in environmental, health and safety standards, Richard currently serves as HSSEQ Manager at Petroleum Importers Limited. He holds an MSc in Environmental Protection and Management from MUBAS and a BSc in Health Management from KUHES. He led the development and certification of an Integrated Management System at PressCane Limited aligned with ISO 9001, ISO 14001 and ISO 45001, and is certified as a lead developer, implementer and auditor across several further ISO standards. His expertise directly strengthens the Organisation's credibility in environmental governance, risk management and responsible programme delivery.",
   },
   {
     name: "Emmanuel Mkagula",
     image: "/Emmanuel.jpeg",
+    linkedin: "https://www.linkedin.com/in/emmanuel-mkagula-5bb830389",
     bio: "A monitoring and evaluation specialist with over four years of experience measuring what agricultural and community development programmes actually achieve, Emmanuel currently works at Art and Global Health Center Africa (ArtGlo) in Zomba, where he also leads fundraising. He began his career at the Department of Agricultural Research Services on the World Bank-funded Agricultural Productivity Program for Southern Africa (APPSA), and has published research on nutrition and agriculture in Malawi. He holds a BSc in Agricultural Economics from LUANAR and is completing an MSc in Agricultural and Applied Economics there. His expertise directly strengthens the Organisation's ability to evidence its impact and build the fundraising capacity it needs to grow.",
   },
 ]

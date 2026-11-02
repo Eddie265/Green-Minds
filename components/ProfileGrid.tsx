@@ -8,6 +8,7 @@ export type Profile = {
   name: string
   image: string
   bio: string
+  role?: string
   linkedin?: string
 }
 
@@ -63,6 +64,12 @@ const ProfileGrid = ({
                 {person.name}
               </h3>
 
+              {person.role && (
+                <p className="mt-1 text-xs font-bold uppercase tracking-wider sm:tracking-widest text-accent">
+                  {person.role}
+                </p>
+              )}
+
               <button
                 type="button"
                 onClick={() => openBio(person)}
@@ -112,6 +119,12 @@ const ProfileGrid = ({
               <h3 className="pr-10 text-2xl md:text-3xl font-black text-primary leading-tight">
                 {selected.name}
               </h3>
+
+              {selected.role && (
+                <p className="mt-2 text-xs font-bold uppercase tracking-widest text-accent">
+                  {selected.role}
+                </p>
+              )}
 
               <p className="mt-5 text-base leading-relaxed text-muted">
                 {selected.bio}

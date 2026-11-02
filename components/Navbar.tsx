@@ -3,25 +3,34 @@
 import React, { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { ArrowRight, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+// Each link points to its own page; `sections` are the section ids that
+// highlight it while scrolling (on the homepage, which shows every section)
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about-us" },
-  { label: "Team", href: "#team" },
-  { label: "Our Work", href: "#our-work" },
-  { label: "Projects", href: "#projects" },
-  { label: "Get Involved", href: "#get-involved" },
-  // { label: "News", href: "#news" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/", sections: ["home"] },
+  { label: "About Us", href: "/about", sections: ["about-us", "focus-areas", "why-us"] },
+  { label: "Team", href: "/team", sections: ["team", "board"] },
+  { label: "Our Work", href: "/our-work", sections: ["our-work"] },
+  { label: "Projects", href: "/our-work#projects", sections: ["projects"] },
+  { label: "Get Involved", href: "/get-involved", sections: ["get-involved"] },
+  { label: "Contact", href: "/get-involved#contact", sections: ["contact"] },
 ]
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
+  const [activeSection, setActiveSection] = useState<string | null>(null)
   const dotRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  // The section in view decides the highlight; at the top of an inner page
+  // (its header has no id) the current page does
+  const activeHref =
+    navLinks.find((link) => activeSection && link.sections.includes(activeSection))?.href ??
+    navLinks.find((link) => link.href === pathname)?.href
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -73,7 +82,7 @@ const Navbar = () => {
   }, [])
 
   useEffect(() => {
-    const activeLink = document.querySelector<HTMLElement>(`[data-section="${activeSection}"]`)
+    const activeLink = activeHref ? document.querySelector<HTMLElement>(`[data-href="${activeHref}"]`) : null
     const dot = dotRef.current
     if (!dot) return
     if (activeLink) {
@@ -83,7 +92,7 @@ const Navbar = () => {
     } else {
       dot.style.opacity = "0"
     }
-  }, [activeSection, scrolled])
+  }, [activeHref, scrolled])
 
   return (
     <nav
@@ -120,12 +129,13 @@ const Navbar = () => {
         {/* Center Links (Desktop) */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-10 relative">
           {navLinks.map((item) => {
-            const isActive = activeSection === item.href.replace("#", "")
+            const isActive = activeHref === item.href
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                data-section={item.href.replace("#", "")}
+                data-href={item.href}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "relative text-[11px] uppercase tracking-[0.2em] transition-all duration-500 pb-1",
                   scrolled
@@ -148,7 +158,7 @@ const Navbar = () => {
         {/* Actions */}
         <div className="flex items-center gap-2 md:gap-4">
           <Link
-            href="#contact"
+            href="/get-involved#contact"
             className={cn(
               "btn-premium hidden sm:flex shrink-0 items-center gap-3 text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500",
               scrolled
@@ -190,7 +200,7 @@ const Navbar = () => {
         <div className="flex flex-col h-full pt-32 px-10 pb-12">
           <div className="flex flex-col gap-4">
             {navLinks.map((item, i) => {
-              const isActive = activeSection === item.href.replace("#", "")
+              const isActive = activeHref === item.href
               return (
                 <Link
                   key={item.label}
@@ -217,7 +227,7 @@ const Navbar = () => {
                <a href="mailto:greenminds43@gmail.com" className="block text-xl font-black text-primary tracking-tight hover:text-accent transition-colors">greenminds43@gmail.com</a>
             </div>
             <Link
-              href="#contact"
+              href="/get-involved#contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center justify-between bg-primary text-white p-6 rounded-[32px] font-black uppercase text-sm tracking-widest group shadow-2xl shadow-primary/20"
             >
