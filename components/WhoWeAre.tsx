@@ -20,7 +20,7 @@ const WhoWeAre = () => {
             {/* Floating Badge */}
             <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8 glass p-4 md:p-6 rounded-2xl md:rounded-3xl">
               <p className="text-primary font-bold text-sm">
-                &ldquo;Young people are not sideliners on the receiving end of change. They can be active drivers of it.&rdquo;
+                &ldquo;Young people are not sideliners on the receiving end of change. They must be active drivers of it.&rdquo;
               </p>
             </div>
           </div>
